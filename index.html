@@ -43,66 +43,56 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Dance Central</a>
+                <a class="navbar-brand navbar-title" href="index.html">Dance Central</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li onclick="showSubnav(1)">
                         <a href="#">dnb step</a>
                     </li>
-                    <li>
+                    <li  onclick="showSubnav(2)">
                         <a href="#">jumpstyle</a>
                     </li>
-                    <li>
+                    <li onclick="showSubnav(3)">
                         <a href="#">free step</a>
                     </li>
-                    <li>
+                    <li onclick="showSubnav(4)">
                         <a href="#">cutting shapes</a>
                     </li>
                 </ul>
-                <div class="not_loggedIn">
+                <div id="notLoggedIn" hidden>
                     <form class="navbar-form pull-right" action="">
                         <input type="text" placeholder="Login" class="form-control">
                         <input type="password" placeholder="Password" class="form-control">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary" onclick="login()">Sign in</button>
                         <a href="src/signUp.html" class="btn btn-default">Sign up</a>
                     </form>
                 </div>
-                
-                
-                
-                
-                <!---->
-                <div class="loggedIn" hidden>
-                    <div class="col-md-2">
-                        <img class="img-responsive img-rounded" src="img/user.jpeg" alt="" width="auto" height="auto">
-                    </div>
-                    <div class="col-md-8">
-                        <h4>BarushCZ</h4>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="dropdown dropdown-menu">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="true">
-                                Dropdown
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                <div id="loggedIn" visible>
+                    <ul class="nav navbar-nav pull-right">
+                        <li><img class="nav-avatar navbar-brand" src="img/user.jpeg" alt="" width="auto" height="auto">&nbsp&nbsp</li>
+                        <li><a href="src/account.html" class="navbar-brand navbar-username">BarushCZ</a></li>
+                        <li class="dropdown" onclick="showSubnav(5)">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                            role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-cog"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="src/account.html">My profile</a></li>
+                                <li><a href="src/userVideos.html">My videos</a></li>
+                                <li><a href="src/settings.html">Settings</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li onclick="logout()"><a>Log out</a></li>
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
                 <!-- /.navbar-collapse -->
+                <!---->
             </div>
             <!-- /.container -->
     </nav>
-    <nav class="navbar navbar-lower navbar-inverse navbar-static-top" role="navigation" visible>
+    <nav id="subnav-bar" class="navbar navbar-lower navbar-inverse navbar-static-top" role="navigation" hidden>
         <!-- Sub-navbar -->
         <div class="container">
 
@@ -110,7 +100,7 @@
                 <li>
                     <a href="src/about.html">about</a>
                 </li>
-                <li>
+                <li >
                     <a href="src/howToStart.html">how to start</a>
                 </li>
                 <li>
@@ -163,7 +153,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h4><b>BarushCZ</b></h4>
-                        <h6>25.12.2015</h6>
+                        <h6 class="video-date">25.12.2015</h6>
                     </div>
                     <div class="col-md-8">
                         <input type="number" class="my-rating rating">
@@ -189,7 +179,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h4><b>Kendas</b></h4>
-                        <h6>25.12.2015</h6>
+                        <h6 class="video-date">25.12.2015</h6>
                     </div>
                     <div class="col-md-8">
                         <input type="number" class="my-rating rating">
@@ -217,7 +207,7 @@
                         <h4>
                             <a href="#" style="color: black"><b>BarushCZ</b></a>
                         </h4>
-                        <h6>25.12.2015</h6>
+                        <h6 class="video-date">25.12.2015</h6>
                     </div>
                     <div class="col-md-8">
                         <input type="number" class="my-rating rating">

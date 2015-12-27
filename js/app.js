@@ -48,6 +48,41 @@ $("#signUpButton").click(function showAlert()
      });
 });
 
+//Show or hide sub nav bar
+var lastClickedUpperNav = 0;
+function showSubnav(id)
+{
+    // LOAD VIDEOS ACCORDING TO ID of dance style
+    if(id == 5)
+    {
+        $("#subnav-bar").hide();
+        lastClickedUpperNav = 0;
+    }
+    else if($("#subnav-bar").is(":hidden") && id != 5)
+    {
+        $("#subnav-bar").fadeIn(500);
+        lastClickedUpperNav = id;
+    }
+    else 
+    {
+        if(lastClickedUpperNav == id) $("#subnav-bar").fadeOut(500);
+        else lastClickedUpperNav = id;
+    }
+    window.location.hash = lastClickedUpperNav;
+}
+
+ // on load of the page: switch to the currently selected tab
+$(document).ready(function()
+ {
+    if(location.hash) 
+    {
+        var hash = (location.hash.split("#")[1] || "");;
+        document.getElementById('myTab_' + hash).className = 'active';
+    }
+});
+
+
+
 //Play and stop music
 function playMusic(id)
 {
@@ -66,6 +101,19 @@ function playMusic(id)
         spanIcon.classList.remove('glyphicon-stop');
         spanIcon.classList.add('glyphicon-play');
     }
+}
 
+//Login user
+function login()
+{
+    $("#notLoggedIn").hide();
+    $("#loggedIn").show();
+}
+
+//Logout user
+function logout()
+{
+    $("#notLoggedIn").show();
+    $("#loggedIn").hide();
 }
 
