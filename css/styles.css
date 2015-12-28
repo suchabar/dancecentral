@@ -108,6 +108,13 @@ img.center {
     margin-bottom: 10px;
 }
 
+/*To center text in div*/
+#changePassword
+{
+    height: 32px;
+    line-height: 32px;
+ }
+
 .btn-file {
     position: relative;
     overflow: hidden;

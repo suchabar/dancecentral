@@ -11,15 +11,6 @@ var myCaptions =
 $(".my-rating").rating({min:0, max:5, step:1, size:'xs', starCaptions: myCaptions, 
 showClear: false});
 
-var selector = '.nav li';
-
-$(selector).on('click', function()
-{
-    $(selector).removeClass('active');
-    $(this).addClass('active');
-});
-
-
 //Load image and display as avatar in sign up page
 $(document).on('change', '.btn-file :file', function() 
 {
@@ -38,50 +29,47 @@ $(document).on('change', '.btn-file :file', function()
     reader.readAsDataURL(selectedFile);    
 });
 
-//Use of promise()
+//Use of promise() when invoking alert
 $("#signUpButton").click(function showAlert() 
 {
      $("#success-alert").show();
      $.when($("#success-alert").fadeOut(2500)).done(function() 
      {
-        window.location.href = "../index.html";
+        window.location.href = "index.php";
      });
 });
 
-//Show or hide sub nav bar
-var lastClickedUpperNav = 0;
-function showSubnav(id)
+//Use of promise() when invoking alert
+$("#accountChangesButton").click(function showAlert() 
 {
-    // LOAD VIDEOS ACCORDING TO ID of dance style
-    if(id == 5)
-    {
-        $("#subnav-bar").hide();
-        lastClickedUpperNav = 0;
-    }
-    else if($("#subnav-bar").is(":hidden") && id != 5)
-    {
-        $("#subnav-bar").fadeIn(500);
-        lastClickedUpperNav = id;
-    }
-    else 
-    {
-        if(lastClickedUpperNav == id) $("#subnav-bar").fadeOut(500);
-        else lastClickedUpperNav = id;
-    }
-    window.location.hash = lastClickedUpperNav;
-}
-
- // on load of the page: switch to the currently selected tab
-$(document).ready(function()
- {
-    if(location.hash) 
-    {
-        var hash = (location.hash.split("#")[1] || "");;
-        document.getElementById('myTab_' + hash).className = 'active';
-    }
+     $("#success-alert").show();
+     $.when($("#success-alert").fadeOut(2500)).done(function() 
+     {
+        window.location.href = "index.php";
+     });
 });
 
+//Make 'li' elements active in nav bar
+var selectorA = '.nav li';
+$(selectorA).on('click', function(event)
+{
+    $(selectorA).removeClass('active');
+    $(this).addClass('active');
+});
 
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++)
+     {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable)
+         {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+}
 
 //Play and stop music
 function playMusic(id)
