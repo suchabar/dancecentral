@@ -114,10 +114,12 @@
                 <?php } ?>
 
                 <!--Add new comment form-->
+                <div class="page-header">
+                    <h4>New comment</h2>
+                </div>
                 <div class="row comment">
                     <form method="post">
                         <fieldset>
-                            <legend>New comment</legend>
                             <!--AVATAR of user-->
                             <div class="col-md-2">
                                  <img class="img-responsive img-rounded" src=

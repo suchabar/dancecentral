@@ -36,12 +36,12 @@
         </p>
         
         <h3>WHY WE DANCE</h3>
-        <p>Because we just love to jump hahaha </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis culpa molestias, ipsum, sunt dicta quam expedita voluptas reprehenderit! Nemo nulla modi dicta deleniti explicabo, omnis veniam saepe dolorum. Quisquam, cupiditate.</p>
 
     </div> 
     
     <div class="col-md-6">
-        <img style="margin:10em" class="img-responsive" src="../img/jumpstyle/dancer.jpg" alt="">
+        <img class="img-responsive" src="../img/jumpstyle/dancer.jpg" alt="">
     </div>
 </div>              
 <br>
@@ -52,6 +52,6 @@
     </div>
     <div class="col-md-10 ">
         <iframe class="vid-responsive" width="720" height="480" 
-        src="http://www.youtube.com/embed/xQIGg9rXsb0?start=33"></iframe>
+        src="http://www.youtube.com/embed/Mfh7qF0PaB4?start=58"></iframe>
     </div>
 </div>

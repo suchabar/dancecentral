@@ -1,4 +1,4 @@
-<?php
+ <?php
     $dsn = 'mysql:dbname=suchabar;host=127.0.0.1';
     $user = 'suchabar';
     $password = 'aaa'; 

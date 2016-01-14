@@ -26,56 +26,28 @@
 <!-- TUTORIALS -->
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 1</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/toYoLkypmsE"></iframe>
+        <h2>FREESTEP TUTORIAL - C STEP</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/Sj12G08YZ7Q"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 2</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/bRxd4sQAsCY"></iframe>
+        <h2>FREESTEP TUTORIAL - BASIC & ADVANCED</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/Mt9hOqoESc8"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 3</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/__s7eeLZZnw"></iframe>
+        <h2>FREESTEP TUTORIAL - COMBOS</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/szC7X8xK3TI"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>PLAGEAT style: base + tricks</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/bNQD75FkEBc"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 2</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/FDQPZzvQ_48"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 3</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/YmW02KP-ZDg"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 4</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/ye1dHSq08lo"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 5</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/OrtudsAq70c"></iframe>
+        <h2>FREESTEP TUTORIAL - BASICS, ADNVANCED, SPEED STYLE</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/-PNimcshPbw"></iframe>
     </div>
 </div>

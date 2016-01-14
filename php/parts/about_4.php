@@ -12,7 +12,7 @@
         </p>
         
         <h3>WHY WE DANCE</h3>
-        <p>Because we simply love to cut the shapes :P</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, praesentium repellendus inventore cum non tempore a perferendis libero accusantium deleniti quo consequatur. Velit culpa doloribus aspernatur ab nobis harum nemo.</p>
 
         
     </div>

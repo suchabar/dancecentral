@@ -26,56 +26,48 @@
 <!-- TUTORIALS -->
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 1</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/toYoLkypmsE"></iframe>
+        <h2>OLD SCHOOL (maybe first jumpstyle tutorial ever)</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/1X8v6rbe27s"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 2</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/bRxd4sQAsCY"></iframe>
+        <h2>OLD SCHOOL: ADVANCED TRICKS PART 1</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/PPKfMWqeYRk"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>OLD SCHOOL: Tutorial part 3</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/__s7eeLZZnw"></iframe>
+        <h2>OLD SCHOOL: ADVANCED TRICKS PART 2</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/e2UqWjBSfxQ"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>PLAGEAT style: base + tricks</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/bNQD75FkEBc"></iframe>
+        <h2>Jumpstyle Tutorial Advanced | Freestyle Tricks | HARDJUMP | SIDEJUMP | OWNSTYLE JUMP </h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/S4qhqUwSTbI"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 2</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/FDQPZzvQ_48"></iframe>
+        <h2>JUMPSTYLE TUTORIAL | HARDJUMP / SIDEJUMP | by Zak</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/XC7jxJy-mog"></iframe>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 3</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/YmW02KP-ZDg"></iframe>
+        <h2>OWNSTYLE JUMPSTYLE tutorial</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/W-6D5elQzJU"></iframe>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 4</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/ye1dHSq08lo"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>PLAGEAT style: tricks tutorial 5</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/OrtudsAq70c"></iframe>
+        <h2>FREESTYLE JUMPSTYLE tutorial</h2>
+        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/h3ynRMSD4c4"></iframe>
     </div>
 </div>

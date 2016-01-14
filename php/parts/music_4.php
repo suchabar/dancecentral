@@ -7,77 +7,49 @@
             is characterized by fast breakbeats (typically between 150–180 beats per minute) with heavy bass and
             sub-bass lines. The "bass line" is usually created with sampled sources or synthesizers.
         </p>
-        <h3>Subgenres of Drum and Bass</h3>
-
-        <iframe class="vid-responsive" width="320" height="200" src="http://www.youtube.com/embed/K4syAOCjuhQ"></iframe>
-
         <h3>FESTIVALS and PARTIES</h3>
         <p>
 
             <ul>
-                <li><a href="http://www.letitroll.eu/news/">Let It Roll festival</a> - every winter and summer - Czech
-                    Republic
-                </li>
-                <li><a href="http://www.exitfest.org/en">Exit festival</a> - every July - Serbia</li>
-                <li><a href="http://www.dourfestival.eu/">Dour Festival</a> - every July - Belgium</li>
-                <li><a href="http://sunandbass.net/">Sun & Bass Festival</a> - every September - Sardinia</li>
-                <li><a href="http://sunandbass.net/">Dimensions Festival</a> - every August - Croatia</li>
+                <li><a href="http://www.tomorrowland.com/en">Tomorrowland festival</a> - every July - Belgium, Brasil, USA</li>
+                <li><a href="http://www.b4l.cz/en/">Beat4Love Festival</a> - every July - CZ</li>
             </ul>
         </p>
     </div>
     <div class="col-md-6">
-        <audio id="dnb1" src="../music/dnb/1.mp3"></audio>
-        <audio id="dnb2" src="../music/dnb/2.mp3"></audio>
-        <audio id="dnb3" src="../music/dnb/3.mp3"></audio>
-        <audio id="dnb4" src="../music/dnb/4.mp3"></audio>
-        <audio id="dnb5" src="../music/dnb/5.mp3"></audio>
-        <audio id="dnb6" src="../music/dnb/6.mp3"></audio>
-        <audio id="dnb7" src="../music/dnb/7.mp3"></audio>
-        <audio id="dnb8" src="../music/dnb/8.mp3"></audio>
-        <!-- SOUNDCLOUD 
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/13087481&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false">
-            </iframe>
-            -->
-        <h3>LIQUID</h3>
-        <i>Suitable for beginners, girls, people who are "new" in listening to DnB. <br> 
-        Just for "chill dnb step" we cas say</i>
-        <br><br>
+         <audio id="deephouse1" src="../music/deephouse/1.mp3"></audio>
+        <audio id="deephouse2" src="../music/deephouse/2.mp3"></audio>
+        <audio id="deephouse3" src="../music/deephouse/3.mp3"></audio>
+        <audio id="deephouse4" src="../music/deephouse/4.mp3"></audio>
+        <audio id="deephouse5" src="../music/deephouse/5.mp3"></audio>
+        <audio id="deephouse6" src="../music/deephouse/6.mp3"></audio>
+        <audio id="deephouse7" src="../music/deephouse/7.mp3"></audio>
+        <audio id="deephouse8" src="../music/deephouse/8.mp3"></audio>
         
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb1')">
-            <span id="dnb1_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Jessie J - Nobodys Perfect (Netsky Full Vocal Mix)
+        <h3>DEEP HOUSE</h3>
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse1')">
+            <span id="deephouse1_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp Rock n Rolla - Block
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb2')">
-            <span id="dnb2_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Feint - My Sunset - Original Mix
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse2')">
+            <span id="deephouse2_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp Hannah Wants  Chris Lorenzo - Rude Boy
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb3')">
-            <span id="dnb3_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Holly Drummond - Out Of My Mind (Rameses B Remix)
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse3')">
+            <span id="deephouse3_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp Len Faki Johannes Heil - The Octopuss
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb4')">
-            <span id="dnb4_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Smote - Summertime
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse4')">
+            <span id="deephouse4_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp JACKNDANNY - House & Gash
         <br><br>
-        
-        <h3>TECHSTEP and NEUROFUNK</h3>
-        <i>Suitable for beginners, advanced dancers, people who don't mind aggresive DnB music with strong rhytm and bass </i> 
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse5')">
+            <span id="deephouse5_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp Storm Queen - Look right through
         <br><br>
-        
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb5')">
-            <span id="dnb5_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Receptor - Punks
+        <button type="button" class="btn btn-play" onClick="playMusic('deephouse6')">
+            <span id="deephouse6_icon" class="glyphicon glyphicon-play"></span>
+        </button>&nbsp&nbsp Calvin Harris Disciples - How Deep Is Your Love (Chris Lake Remix)
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb6')">
-            <span id="dnb6_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Dc Breaks - Swag
-        <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb7')">
-            <span id="dnb7_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Christ - Hidden Depth
-        <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb8')">
-            <span id="dnb8_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp NickBee - Third Entity
     </div>
 </div>
