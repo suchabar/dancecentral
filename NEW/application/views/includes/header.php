@@ -38,16 +38,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav nav-danceStyles">
                      <li class="<?php echo $danceStyle == 1 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/style/1') ?>">dnb step</a>
+                        <a href="<?php echo site_url('home/filter/1') ?>">dnb step</a>
                     </li>
                     <li class="<?php echo $danceStyle == 2 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/style/2') ?>" >jumpstyle</a>
+                        <a href="<?php echo site_url('home/filter/2') ?>" >jumpstyle</a>
                     </li>
                     <li class="<?php echo $danceStyle == 3 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/style/3') ?>" >free step</a>
+                        <a href="<?php echo site_url('home/filter/3') ?>" >free step</a>
                     </li>
                     <li class="<?php echo $danceStyle == 4 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/style/4') ?>" >cutting shapes</a>
+                        <a href="<?php echo site_url('home/filter/4') ?>" >cutting shapes</a>
                     </li>
                 </ul>
                 <div id="notLoggedIn" hidden>

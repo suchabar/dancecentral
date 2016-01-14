@@ -2,7 +2,7 @@
 
 class Home extends CI_Controller
 {
-    public $data;
+     public $data;
     
      function __construct()
      {
@@ -25,11 +25,30 @@ class Home extends CI_Controller
         
     }
     
-    function style()
+    function filter()
     {
         $this->load->model('video_model');
         $data['danceStyle'] = $this->uri->segment(3);
         $data['videos'] = $this->video_model->getVideos($data['danceStyle'], $this->data['page']);
+        //GENERATE PAGE
+        $data['pageContent'] = 'main_view';
+        $this->load->view('includes/template', $data);
+    }
+    
+    function arrangement()
+    {
+        //LOAD VIDEOS AND RETURN ARRANGED ACCORDING TO $this->uri->segment(3)
+        /*
+            1 - Date added (newest > oldest)
+            2 - Date added (oldest > newest)
+            3 - Best rated
+            4 - Worst rated
+        */
+        $data['danceStyle'] = $this->uri->segment(5);
+        $this->load->model('video_model'); 
+        $data['videos'] = $this->video_model->getVideos($this->uri->segment(5), $this->data['page'], 
+                                                        $this->uri->segment(3), $this->uri->segment(4));
+        
         //GENERATE PAGE
         $data['pageContent'] = 'main_view';
         $this->load->view('includes/template', $data);
@@ -37,20 +56,26 @@ class Home extends CI_Controller
     
     function page()
     {
-        $this->load->model('video_model');
-        $data['danceStyle'] = $this->uri->segment(3);
-        $data['videos'] = $this->video_model->getVideos($data['danceStyle'], $this->data['page']);
-        //GENERATE PAGE
-        $data['pageContent'] = 'main_view';
-        $this->load->view('includes/template', $data);
+        // $this->load->model('video_model');
+        // $data['danceStyle'] = $this->uri->segment(3);
+        // $data['videos'] = $this->video_model->getVideos($data['danceStyle'], $this->data['page']);
+        // //GENERATE PAGE
+        // $data['pageContent'] = 'main_view';
+        // $this->load->view('includes/template', $data);
     }
+    
+    
+    
+    //CHANGE OF "PAGECONTENT" IN TEMPLATE
     
     function video_detail()
     {
+        //DANCE STYLE INFO
+        $data = $this->data;
         //GET VIDEO DETAILS 
         $this->load->model('video_model');
         $data['video'] = $this->video_model->getVideoDetail();
-        
+        //GET COMMENTS
         $this->load->model('comment_model');
         $data['comments'] = $this->comment_model->getComments();
         
@@ -61,21 +86,18 @@ class Home extends CI_Controller
     
     function about()
     {
-        //GENERATE PAGE
         $data['pageContent'] = 'parts/about_view'.$this->uri->segment(3);
         $this->load->view('includes/template', $data);
     }
     
     function how_to_start()
     {
-        //GENERATE PAGE
         $data['pageContent'] = 'parts/how_to_start_view'.$this->uri->segment(3);
         $this->load->view('includes/template', $data);
     }
     
     function music()
     {
-        //GENERATE PAGE
         $data['pageContent'] = 'parts/music_view'.$this->uri->segment(3);
         $this->load->view('includes/template', $data);
     }

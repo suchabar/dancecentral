@@ -8,9 +8,10 @@
                     <span id="selected">Date added (newest > oldest)</span>
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Date added (oldest > newest)</a></li>
-                    <li><a href="#">Best rated</a></li>
-                    <li><a href="#">Worst rated</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/desc/'. $danceStyle) ?>">Date added (newest > oldest)</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/asc/'. $danceStyle) ?>">Date added (oldest > newest)</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/ratings/desc/'. $danceStyle) ?>">Best rated</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/ratings/asc/'. $danceStyle) ?>">Worst rated</a></li>
                 </ul>
             </div>
         </div>
@@ -18,7 +19,7 @@
     <!-- /.row -->
 
     <!-- Projects Row -->
-        <div class="row">
+    <div class="row">
     <?php foreach ($videos as $video) : ?>
         <div class="col-md-4">
             <!--Preview of video-->

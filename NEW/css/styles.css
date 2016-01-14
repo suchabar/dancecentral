@@ -38,13 +38,14 @@ body {
 .video-header{
     margin-bottom: 0px;
     margin-top: 15px;
+    height: 50px;
 }
 
 .video-preview
 {
     position: relative; 
-    top: 0; 
-    left: 0;
+    height: auto; 
+    width: auto;
 }
 .video-date
 {
@@ -54,8 +55,6 @@ body {
 div.video-preview-play
 {
     position: relative; 
-    left: 0; 
-    top: 0;
 }
 
 div.video-preview-play a:hover > img
@@ -66,11 +65,12 @@ div.video-preview-play a:hover > img
 img.video-preview-play
 {
     visibility:hidden;
-    position: absolute; 
-    height: 10em;
-    width:10em;
-    left: 8em; 
-    top: 5em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 9em;
+    width:9em;
 }
 
 h2.center {
@@ -85,7 +85,6 @@ img.center {
 .vid-responsive
 {
     display: block;
-    max-width: 100%;
 }
 
 .registration,

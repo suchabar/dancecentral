@@ -3,6 +3,7 @@
     {
         function getComments()
         {
+            $data = array();
             $q = $this->db->query("SELECT * FROM comments WHERE id_video = " . $this->uri->segment(3));
             if($q->num_rows() > 0)
             {
@@ -10,8 +11,8 @@
                 {
                     $data[] = $row;
                 }
-                return $data;
             }
+            return $data;
         }
     
         function addComment()
