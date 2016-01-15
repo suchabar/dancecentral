@@ -9,7 +9,49 @@ var myCaptions =
 };
 
 $(".my-rating").rating({min:0, max:5, step:1, size:'xs', starCaptions: myCaptions, 
+showClear: false, readonly: true});
+$(".video-rating").rating({min:0, max:5, step:1, size:'xs', starCaptions: myCaptions, 
 showClear: false});
+
+$('.video-rating').on('rating.change', function(event, value, caption)
+{
+    $.ajax({
+        method: 'POST',
+        url: window.location.origin + '/dancecentral/index.php/video/rateVideo/',
+        data: { rating: value }, 
+        success:function(first_time_rated) 
+        {
+            if(first_time_rated == 0)
+            {
+                var count = parseInt($('#ratings_count').text()) + 1;
+                $('#ratings_count').html(count);
+            }
+            parse$('#ratings').text()
+        }  
+    });
+});
+
+function thumbs(commentId, thumb)
+{
+    $.ajax({
+        method: 'POST',
+        url: window.location.origin + '/dancecentral/index.php/video/thumbs/',
+        data: { ratingValue: thumb,
+                commentId : commentId
+        }, 
+        success:function(msg) 
+        {
+                if(msg.substring(0, 3) === 'You')alert(msg)
+                else 
+                {
+                    var value = parseInt($('.votes' + commentId).text()) + parseInt(thumb);
+                    console.log(value);
+                    $('.votes' + commentId).html(value>0 ? '+' + value: value);
+                }
+        }
+        });   
+}   
+
 
 //Load image and display as avatar in sign up page
 $(document).on('change', '.btn-file :file', function() 
@@ -30,18 +72,18 @@ $(document).on('change', '.btn-file :file', function()
 });
 
 //Use of promise() when invoking alert
-$("#signUpButton").click(function showAlert() 
+$("#signUp").click(function showAlert() 
 {
      $("#success-alert").show();
      $.when($("#success-alert").fadeOut(2500)).done(function() 
      {
-        window.location.href = "index.php";
+        window.location.href = "home/";
      });
 });
 
 $('.dropdown-menu a').click(function(){
     $('#selected').text($(this).text());
-  });
+});
 
 
 // DELETE
@@ -66,13 +108,6 @@ function logout()
 //^^ DELETE
 
 
-
-
-
-
-
-
-
 //Use of promise() when invoking alert
 $("#accountChangesButton").click(function showAlert() 
 {
@@ -82,28 +117,6 @@ $("#accountChangesButton").click(function showAlert()
         window.location.href = "index.php";
      });
 });
-
-//Make 'li' elements active in nav bar
-var selectorA = '.nav li';
-$(selectorA).on('click', function(event)
-{
-    $(selectorA).removeClass('active');
-    $(this).addClass('active');
-});
-
-function getQueryVariable(variable)
-{
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++)
-     {
-        var pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable)
-         {
-            return decodeURIComponent(pair[1]);
-        }
-    }
-}
 
 //Play and stop music
 function playMusic(id)

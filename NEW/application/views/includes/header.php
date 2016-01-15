@@ -32,33 +32,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand navbar-title" href="<?php echo site_url('') ?>">Dance Central</a>
+                <a class="navbar-brand navbar-title" href="<?php echo site_url('home/') ?>">Dance Central</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav nav-danceStyles">
-                     <li class="<?php echo $danceStyle == 1 ? 'active': ''?>">
+                     <li class="<?php echo $this->session->danceStyle == 1 ? 'active': ''?>">
                         <a href="<?php echo site_url('home/filter/1') ?>">dnb step</a>
                     </li>
-                    <li class="<?php echo $danceStyle == 2 ? 'active': ''?>">
+                    <li class="<?php echo $this->session->danceStyle == 2 ? 'active': ''?>">
                         <a href="<?php echo site_url('home/filter/2') ?>" >jumpstyle</a>
                     </li>
-                    <li class="<?php echo $danceStyle == 3 ? 'active': ''?>">
+                    <li class="<?php echo $this->session->danceStyle == 3 ? 'active': ''?>">
                         <a href="<?php echo site_url('home/filter/3') ?>" >free step</a>
                     </li>
-                    <li class="<?php echo $danceStyle == 4 ? 'active': ''?>">
+                    <li class="<?php echo $this->session->danceStyle == 4 ? 'active': ''?>">
                         <a href="<?php echo site_url('home/filter/4') ?>" >cutting shapes</a>
                     </li>
                 </ul>
-                <div id="notLoggedIn" hidden>
+                <div id="notLoggedIn" visible>
                     <form class="navbar-form pull-right" action="">
                         <input type="text" placeholder="Login" class="form-control">
                         <input type="password" placeholder="Password" class="form-control">
                         <button type="submit" class="btn btn-primary" onclick="login()">Sign in</button>
-                        <a href="signUp.php" class="btn btn-default">Sign up</a>
+                        <a href="<?php echo site_url('account/signup/') ?>" class="btn btn-default">Sign up</a>
                     </form>
                 </div>
-                <div id="loggedIn" visible>
+                <div id="loggedIn" hidden>
                     <ul class="nav navbar-nav pull-right">
                         <li><img class="nav-avatar navbar-brand" src="<?php echo base_url(); ?>img/user.jpeg" alt="" width="auto" height="auto">&nbsp&nbsp</li>
                         <li><a href="account.php" class="navbar-brand navbar-username">BarushCZ</a></li>
@@ -81,18 +81,18 @@
             </div>
             <!-- /.container -->
     </nav>
-    <nav <?php echo $danceStyle != 0 ? 'visible': 'hidden'?> id="subnav-bar" class="navbar navbar-lower navbar-inverse navbar-static-top" role="navigation" >
+    <nav <?php echo $this->session->danceStyle != 0 ? 'visible': 'hidden'?> id="subnav-bar" class="navbar navbar-lower navbar-inverse navbar-static-top" role="navigation" >
         <!-- Sub-navbar -->
         <div class="container">
             <ul class="nav navbar-nav ">
                 <li>
-                    <a href="<?php echo site_url('home/about/'. $danceStyle) ?>">about</a>
+                    <a href="<?php echo site_url('home/about/') ?>">about</a>
                 </li>
                 <li >
-                    <a href="<?php echo site_url('home/how_to_start/'. $danceStyle )?>">how to start</a>
+                    <a href="<?php echo site_url('home/how_to_start/')?>">how to start</a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('home/music/'. $danceStyle) ?>">music</a>
+                    <a href="<?php echo site_url('home/music/') ?>">music</a>
                 </li>
             </ul>
         </div>

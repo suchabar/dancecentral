@@ -1,13 +1,14 @@
-    <hr>
+        <hr>
 
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>&copy; Suchanova Barbora 2015</p>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>&copy; Suchanova Barbora 2015</p>
+                </div>
             </div>
-        </div>
-        <!-- /.row -->
-    </footer>
+            <!-- /.row -->
+         </footer>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

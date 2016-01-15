@@ -19,34 +19,57 @@
             }
             return $data;
         }
-        
-        function getVideoDetail()
+        //SELECT `id_video`, AVG(ratings) AS average FROM `ratings` GROUP BY id_video
+        //SELECT videos.id,name, AVG(ratings.ratings) AS ratings FROM videos RIGHT OUTER JOIN ratings ON ratings.id_video = videos.id GROUP BY videos.id
+        function getVideoDetail($videoId)
         {
+            $this->incrementVideoViews($videoId);
             //QUERY BUILDER SAVE US FROM SQL INJECTIONS
             $this->db->select('*');
-            $this->db->where('id', $this->uri->segment(3));
-            $this->db->get('videos');
-            $q = $this->db->query("SELECT * FROM videos WHERE id = " . $this->uri->segment(3));
-            
-            if($q->num_rows() == 1)
-            {
-                return $q->result()[0];
-            }
+            $this->db->where('id', $videoId);
+            $q = $this->db->get('videos');
+            if($q->num_rows() == 1) $data = $q->result()[0];
+            //GET RATINGS
+            $this->db->select_avg('ratings');
+            $this->db->where('id_video', $videoId);
+            $query_ratings = $this->db->get('ratings');
+            if($query_ratings->num_rows() == 1)$data->ratings = $query_ratings->result()[0]->ratings;
+            else $data->ratings = 0;
+            //GET COUNT OF RATINGS 
+            $this->db->where('id_video', $videoId);
+            $this->db->from('ratings');
+            $data->ratings_count = $this->db->count_all_results();  
+            return $data;
         }
         
-        function getRatingsAvg($id)
+        function incrementVideoViews($id)
         {
-            $this->db->select('id_video, AVG(ratings) AS average');
-            //SELECT `id_video`, AVG(ratings) AS average FROM `ratings` GROUP BY id_video
-            $this->db->where('id_video', $id);
-            //$this->db->group_by('id_video');
-            $q-> $this->db->get('ratings'); 
-            if($q->num_rows() == 1)
+            $this->db->where('id', $id);
+            $this->db->set('views', 'views+1', FALSE);
+            $this->db->update('videos');
+        }
+        
+        function rateVideo($value, $videoId)
+        {
+            $this->db->select('*');
+            $this->db->where('id_video', $videoId);
+            $this->db->where('ip_address', $this->input->ip_address());
+            $q = $this->db->get('ratings');
+            if($q->num_rows() == 0) 
             {
-                return $q->result()[0];
-            }
-            
-            //SELECT videos.id,name, AVG(ratings.ratings) AS ratings FROM videos RIGHT OUTER JOIN ratings ON ratings.id_video = videos.id GROUP BY videos.id
-            
+                $newRating = array(
+                'id_video' => $videoId,
+                'ip_address' => $this->input->ip_address() );
+                $this->db->insert('ratings', $newRating);
+                return true;
+            }        
+            else
+            {
+                $this->db->where('id_video', $videoId);
+                $this->db->where('ip_address', $this->input->ip_address());
+                $this->db->set('ratings', $value, FALSE);
+                $this->db->update('ratings');
+                return false;
+            } 
         }
     }

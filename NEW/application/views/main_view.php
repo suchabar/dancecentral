@@ -8,10 +8,10 @@
                     <span id="selected">Date added (newest > oldest)</span>
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/desc/'. $danceStyle) ?>">Date added (newest > oldest)</a></li>
-                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/asc/'. $danceStyle) ?>">Date added (oldest > newest)</a></li>
-                    <li><a href="<?php echo site_url('home/arrangement/ratings/desc/'. $danceStyle) ?>">Best rated</a></li>
-                    <li><a href="<?php echo site_url('home/arrangement/ratings/asc/'. $danceStyle) ?>">Worst rated</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/desc/') ?>">Date added (newest > oldest)</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/date_of_upload/asc/') ?>">Date added (oldest > newest)</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/ratings/desc/') ?>">Best rated</a></li>
+                    <li><a href="<?php echo site_url('home/arrangement/ratings/asc/') ?>">Worst rated</a></li>
                 </ul>
             </div>
         </div>
@@ -24,15 +24,15 @@
         <div class="col-md-4">
             <!--Preview of video-->
             <div class="video-preview-play">
-                <a href="<?php echo site_url('home/video_detail/' . $video->id) ?>">
+                <a href="<?php echo site_url('video/detail/' . $video->id) ?>">
                     <img class="video-preview img-responsive" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="">
-                    <img class="video-preview-play img-responsive" src="http://www.slatecube.com/images/play-btn.png" alt="">
+                    <img class="video-preview-play img-responsive" src="<?php echo base_url(); ?>img/play-btn.png" alt="">
                 </a>
             </div>
 
             <!--Title of video-->
             <h3 class="video-header">
-                <a href="<?php echo site_url('home/video_detail/' . $video->id) ?>">
+                <a href="<?php echo site_url('video/detail/' . $video->id) ?>">
                 <?= $video->name ?> </a>
             </h3>
 
