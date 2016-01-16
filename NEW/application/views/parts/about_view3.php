@@ -2,6 +2,7 @@
  <!-- FREESTEP - ABOUT -->
     <div class="row">
         <div class="col-md-6">
+            <h1 class="visible-print-block">ABOUT FREESTEP</h1>
             <h3>ABOUT</h3>
             Free Step is a dance that consists of sliding on the floor movements with their legs and hands under the beats of electronic
             music. The dance is based on elaborate and quick movements, and to include other dance styles such as Melbourne
@@ -61,7 +62,7 @@
     <br>
 
     <!-- Page Header -->
-    <div class="row">
+    <div class="row  hidden-print">
         <div class="col-md-2 ">
         </div>
         <div class="col-md-10 ">

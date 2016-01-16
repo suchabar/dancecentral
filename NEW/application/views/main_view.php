@@ -1,13 +1,13 @@
 <!-- Page Content -->
 <div class="container">
     <!-- Page Header -->
-    <div class="row">
+    <div class="row hidden-print">
         <div class="col-lg-12">
             <div class="dropdown filtering-dropdown pull-right">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                    <span id="selected">Date added (newest > oldest)</span>
+                    <span id="selected"><?php echo $this->session->order ?></span>
                     <span class="caret"></span></button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu filter-dropdown">
                     <li><a href="<?php echo site_url('home/arrangement/date_of_upload/desc/') ?>">Date added (newest > oldest)</a></li>
                     <li><a href="<?php echo site_url('home/arrangement/date_of_upload/asc/') ?>">Date added (oldest > newest)</a></li>
                     <li><a href="<?php echo site_url('home/arrangement/ratings/desc/') ?>">Best rated</a></li>
@@ -31,10 +31,13 @@
             </div>
 
             <!--Title of video-->
+            <h4 class="visible-print-block">https://www.youtube.com/watch?v=<?php echo $video->link ?></h4>
             <h3 class="video-header">
                 <a href="<?php echo site_url('video/detail/' . $video->id) ?>">
                 <?= $video->name ?> </a>
             </h3>
+
+            
 
             <!--Ratings, date and author of video-->
             <div class="row">
@@ -52,9 +55,9 @@
     <?php endforeach; ?> 
     </div>
         
-    <hr>
+    <hr class="hidden-print">
     <!-- Pagination -->
-    <div class="row text-center">
+    <div class="row text-center hidden-print">
         <div class="col-lg-12">
             <ul class="pagination">
                 <li id="leftArrow">

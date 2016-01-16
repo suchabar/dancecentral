@@ -2,6 +2,7 @@
 <!-- CUTTING SHAPES - MUSIC -->
 <div class="row">
     <div class="col-md-6">
+        <h1 class="visible-print-block">CUTTING SHAPES</h1>
         <h3>GENRE</h3>
         <p>
            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus maiores pariatur, necessitatibus, nesciunt, iure cumque odio incidunt enim unde est esse. Id, consequuntur in assumenda dolorum rem fuga voluptatum totam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic quas, fugit nobis, dolore magni, dolorum esse fugiat temporibus vel id blanditiis dicta? Mollitia veniam ea voluptates voluptas expedita ab quidem.
@@ -26,27 +27,27 @@
         <audio id="deephouse8" src="<?php echo base_url(); ?>music/deephouse/8.mp3"></audio>
         
         <h3>DEEP HOUSE</h3>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse1')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse1')">
             <span id="deephouse1_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Rock n Rolla - Block
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse2')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse2')">
             <span id="deephouse2_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Hannah Wants  Chris Lorenzo - Rude Boy
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse3')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse3')">
             <span id="deephouse3_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Len Faki Johannes Heil - The Octopuss
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse4')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse4')">
             <span id="deephouse4_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp JACKNDANNY - House & Gash
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse5')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse5')">
             <span id="deephouse5_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Storm Queen - Look right through
         <br><br>
-        <button type="button" class="btn btn-play" onClick="playMusic('deephouse6')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('deephouse6')">
             <span id="deephouse6_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Calvin Harris Disciples - How Deep Is Your Love (Chris Lake Remix)
         <br><br>

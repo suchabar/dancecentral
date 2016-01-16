@@ -2,6 +2,7 @@
 <!-- CUTTING SHAPES - ABOUT -->
 <div class="row">
     <div class="col-md-6">
+        <h1 class="visible-print-block">ABOUT CUTTING SHAPES</h1>
         <h3>HISTORY</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto vitae dicta eaque fugiat tempore molestias, possimus debitis alias rem, quos consequuntur tempora nemo reprehenderit adipisci. Vero eligendi, deleniti similique repudiandae?
@@ -24,7 +25,7 @@
 <br>
 
 <!-- EXAMPLE VID-->
-<div class="row">
+<div class="row hidden-print">
     <div class="col-md-2 ">
     </div>
     <div class="col-md-10 ">

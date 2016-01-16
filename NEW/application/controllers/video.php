@@ -4,13 +4,15 @@ class Video extends CI_Controller
 {
     function index()
     {
-        $this->setSessionData();
         //GET VIDEO DETAILS 
         $this->load->model('video_model');
         $data['video'] = $this->video_model->getVideoDetail($this->session->videoId);
         //GET COMMENTS
         $this->load->model('comment_model');
         $data['comments'] = $this->comment_model->getComments($this->session->videoId);
+        //GET ACCOUNT OF UPLOADING PERSON
+        $this->load->model('account_model');
+        $data['uploadingUser'] = $this->account_model->getAccount($data['video']->id_user);
         
         //GENERATE PAGE
         $data['pageContent'] = 'video_view';
@@ -29,6 +31,7 @@ class Video extends CI_Controller
     
     function detail()
     {
+        $this->setSessionData();
         $this->index();        
     }
     
@@ -37,8 +40,13 @@ class Video extends CI_Controller
         $rating = $this->input->post('rating');
         $this->load->model('video_model');
         $first_time_rated = $this->video_model->rateVideo($rating, $this->session->videoId);
-        if(!$first_time_rated)echo true;
-        else echo false;
+        $data['video'] = $this->video_model->getVideoDetail($this->session->videoId);
+        $jsonResponse = array(
+            'first_time_rated' => $first_time_rated,
+            'rating' => $data['video']->ratings
+        );
+        $json = json_encode($jsonResponse);
+        echo $json;
     }
     
     function thumbs()
@@ -50,6 +58,13 @@ class Video extends CI_Controller
         $this->load->model('comment_model');
         $is_result_successfull = $this->comment_model->rateComment($ratingsValue, $commentId);
         if(!$is_result_successfull)echo 'You have already voted!';
+    }
+    
+    function comment()
+    {
+         $this->load->model('comment_model');
+         $this->comment_model->addComment();
+         redirect('/video/detail/'.$this->session->videoId);
     }
     
 }

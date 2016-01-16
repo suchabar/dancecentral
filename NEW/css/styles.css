@@ -2,6 +2,11 @@ body {
 
 }
 
+.no-js
+{
+    margin-top: 20px;
+}
+
 .navbar-upper{
     margin-bottom: 0px;
     border:0px;
@@ -88,6 +93,7 @@ img.center {
 }
 
 .registration,
+.avatar-big,
 .avatar,
 .video-page
 {
@@ -140,6 +146,29 @@ img.center {
     outline: none !important;
 }
 
+.form-group.required .control-label:after 
+{
+  content:"*";
+  color:red;
+}
+
 footer {
     margin: 50px 0;
+}
+
+@media print 
+{
+    a[href]:after 
+    {
+        content: none !important;
+    }
+  
+   .comments {page-break-before: always;}
+   
+   .avatar, .avatar-big
+   {
+       height: 75px !important;
+       width: 75px !important;
+   }
+  
 }

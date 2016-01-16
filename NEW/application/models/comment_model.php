@@ -17,23 +17,19 @@
             return $data;
         }
     
-        function addComment($newComment)
+        function addComment()
         {
+            $newComment = array(
+                'text' => $this->input->post('comment_text'),
+                'date' => date("Y-m-d H:i:s"),
+                'ratings' => 0,
+                'id_user' => $this->input->post('uploadingPerson'),
+                'id_video' => $this->session->videoId);
             $this->db->insert('comments', $newComment);
-            /*
-            //NEW COMMENT from form
-        if (isset($_POST["new-comment"])) 
-        {
-            $sql = $db->prepare(
-                "INSERT INTO comments (id_user, id_video, text, date)
-                VALUES (?, ?, ?, NOW())");
-            $sql->execute([$video["id_user"], $videoId, $_POST["text"]]);
-        }
-            */
         }
         
         function deleteComment($commentId)
-    {
+        {
             $this->db->where('id', $commentId);
             $this->db->delete('comments');
         }

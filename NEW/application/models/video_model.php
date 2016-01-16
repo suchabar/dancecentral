@@ -59,7 +59,8 @@
             {
                 $newRating = array(
                 'id_video' => $videoId,
-                'ip_address' => $this->input->ip_address() );
+                'ip_address' => $this->input->ip_address(),
+                'ratings' =>  $value);
                 $this->db->insert('ratings', $newRating);
                 return true;
             }        

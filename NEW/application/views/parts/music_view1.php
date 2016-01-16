@@ -2,19 +2,18 @@
 <!-- DNB STEP - MUSIC -->
 <div class="row">
     <div class="col-md-6">
+        <h1 class="visible-print-block">DNB STEP</h1>
         <h3>GENRE</h3>
         <p>
             Drum and Bass is a genre of electronic music also known as jungle which emerged in England in the early 1990s. The genre
             is characterized by fast breakbeats (typically between 150–180 beats per minute) with heavy bass and sub-bass
             lines. The "bass line" is usually created with sampled sources or synthesizers.
         </p>
-        <h3>Subgenres of Drum and Bass</h3>
-
-        <iframe class="vid-responsive" width="320" height="200" src="http://www.youtube.com/embed/K4syAOCjuhQ"></iframe>
+        <h3 class="hidden-print">Subgenres of Drum and Bass</h3>
+        <iframe class="vid-responsive hidden-print" width="320" height="200" src="http://www.youtube.com/embed/K4syAOCjuhQ"></iframe>
 
         <h3>FESTIVALS and PARTIES</h3>
         <p>
-
             <ul>
                 <li><a href="http://www.letitroll.eu/news/">Let It Roll festival</a> - every winter and summer - Czech Republic
                 </li>
@@ -42,22 +41,22 @@
         <br>
         <br>
 
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb1')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb1')">
             <span id="dnb1_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Jessie J - Nobodys Perfect (Netsky Full Vocal Mix)
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb2')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb2')">
             <span id="dnb2_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Feint - My Sunset - Original Mix
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb3')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb3')">
             <span id="dnb3_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Holly Drummond - Out Of My Mind (Rameses B Remix)
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb4')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb4')">
             <span id="dnb4_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Smote - Summertime
         <br>
@@ -68,22 +67,22 @@
         <br>
         <br>
 
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb5')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb5')">
             <span id="dnb5_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Receptor - Punks
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb6')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb6')">
             <span id="dnb6_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Dc Breaks - Swag
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb7')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb7')">
             <span id="dnb7_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp Christ - Hidden Depth
         <br>
         <br>
-        <button type="button" class="btn btn-play" onClick="playMusic('dnb8')">
+        <button type="button" class="btn btn-play hidden-print" onClick="playMusic('dnb8')">
             <span id="dnb8_icon" class="glyphicon glyphicon-play"></span>
         </button>&nbsp&nbsp NickBee - Third Entity
     </div>

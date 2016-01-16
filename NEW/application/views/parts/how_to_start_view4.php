@@ -2,6 +2,7 @@
 <!-- CUTTING SHAPES - HOW TO START -->
 <div class="row">
     <div class="col-md-12">
+        <h1 class="visible-print-block">CUTTING SHAPES</h1>
         <h3>HOW TO START</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto vitae dicta eaque fugiat tempore molestias, possimus debitis
@@ -24,18 +25,19 @@
     </div>
 </div>
 
-<!-- TUTORIALS -->
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>CUTTING SHAPES - BASICS</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/HAQq1iOqx0E"></iframe>
+<div class="hidden-print">
+    <!-- TUTORIALS -->
+    <div class="row">
+        <div class="col-md-10 ">
+            <h2>CUTTING SHAPES - BASICS</h2>
+            <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/HAQq1iOqx0E"></iframe>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 ">
+            <h2>CUTTING SHAPES - ADVANCED</h2>
+            <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/jCf5f892GEs"></iframe>
+        </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-md-10 ">
-        <h2>CUTTING SHAPES - ADVANCED</h2>
-        <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/jCf5f892GEs"></iframe>
-    </div>
-</div>
-

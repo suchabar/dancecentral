@@ -1,3 +1,4 @@
+//STAR RATING INITIALIZATION
 var myCaptions = 
 {
     0: 'Not Rated',
@@ -13,24 +14,25 @@ showClear: false, readonly: true});
 $(".video-rating").rating({min:0, max:5, step:1, size:'xs', starCaptions: myCaptions, 
 showClear: false});
 
+//AJAX REQUEST HANDLING OF STAR RATING
 $('.video-rating').on('rating.change', function(event, value, caption)
 {
     $.ajax({
         method: 'POST',
         url: window.location.origin + '/dancecentral/index.php/video/rateVideo/',
         data: { rating: value }, 
-        success:function(first_time_rated) 
+        success:function(response) 
         {
-            if(first_time_rated == 0)
-            {
-                var count = parseInt($('#ratings_count').text()) + 1;
-                $('#ratings_count').html(count);
-            }
-            parse$('#ratings').text()
+            //console.log(response);
+            var json = $.parseJSON(response);
+            var count = parseInt($('#ratings_count').text()) + 1;
+            if(json['first_time_rated'])$('#ratings_count').html(count);
+            $('#ratings').text(json['rating']);
         }  
     });
 });
 
+//AJAX REQUEST HANDLING OF THUMBS UP/DOWN RATING
 function thumbs(commentId, thumb)
 {
     $.ajax({
@@ -50,8 +52,70 @@ function thumbs(commentId, thumb)
                 }
         }
         });   
-}   
+}  
 
+//JQUERY DYNAMIC VALIDATION OF SIGN UP FORM 
+$('.password').keyup(function()
+{
+    if($("#passwordInput").val().length > 3)
+    {
+        $("#passwordField").addClass("has-success has-feedback");
+        $("#passwordSpan").addClass("glyphicon glyphicon-ok");
+        if($("#passwordInput").val() == $("#passwordInput2").val())
+        {
+            //THEY MATCH
+            $("#passwordField2").addClass("has-success has-feedback");
+            $("#passwordSpan2").addClass("glyphicon glyphicon-ok");
+        }
+        else
+        {
+            //THEY ARE DIFFERENT
+            $("#passwordField2").removeClass("has-success has-feedback");
+            $("#passwordSpan2").removeClass("glyphicon glyphicon-ok");
+        }
+    }
+    else
+    {
+        $("#passwordField").removeClass("has-success has-feedback");
+        $("#passwordSpan").removeClass("glyphicon glyphicon-ok");
+    }
+});
+
+$('#email').keyup(function()
+{
+    if(isEmail($("#email").val()))
+    {
+        $("#emailField").addClass("has-success has-feedback");
+        $("#emailSpan").addClass("glyphicon glyphicon-ok");
+    }
+    else
+    {
+        $("#emailField").removeClass("has-success has-feedback");
+        $("#emailSpan").removeClass("glyphicon glyphicon-ok");
+    }
+});
+
+function isEmail(email) 
+{
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+
+$('#username').keyup(function()
+{
+    if($("#username").val().length > 1)
+    {
+        $("#usernameField").addClass("has-success has-feedback");
+        $("#usernameSpan").addClass("glyphicon glyphicon-ok");
+    }
+    else
+    {
+        $("#usernameField").removeClass("has-success has-feedback");
+        $("#usernameSpan").removeClass("glyphicon glyphicon-ok");
+    }
+});
+
+ 
 
 //Load image and display as avatar in sign up page
 $(document).on('change', '.btn-file :file', function() 
@@ -71,51 +135,8 @@ $(document).on('change', '.btn-file :file', function()
     reader.readAsDataURL(selectedFile);    
 });
 
-//Use of promise() when invoking alert
-$("#signUp").click(function showAlert() 
-{
-     $("#success-alert").show();
-     $.when($("#success-alert").fadeOut(2500)).done(function() 
-     {
-        window.location.href = "home/";
-     });
-});
-
-$('.dropdown-menu a').click(function(){
+$('.filter-dropdown a').click(function(){
     $('#selected').text($(this).text());
-});
-
-
-// DELETE
-
-
-//Login user
-function login()
-{
-    $("#notLoggedIn").hide();
-    $("#loggedIn").show();
-}
-
-//Logout user
-function logout()
-{
-    $("#notLoggedIn").show();
-    $("#loggedIn").hide();
-}
-
-
-
-//^^ DELETE
-
-
-//Use of promise() when invoking alert
-$("#accountChangesButton").click(function showAlert() 
-{
-     $("#success-alert").show();
-     $.when($("#success-alert").fadeOut(2500)).done(function() 
-     {
-        window.location.href = "index.php";
-     });
 });
 
 //Play and stop music

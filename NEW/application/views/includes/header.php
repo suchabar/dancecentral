@@ -50,18 +50,34 @@
                         <a href="<?php echo site_url('home/filter/4') ?>" >cutting shapes</a>
                     </li>
                 </ul>
-                <div id="notLoggedIn" visible>
-                    <form class="navbar-form pull-right" action="">
-                        <input type="text" placeholder="Login" class="form-control">
-                        <input type="password" placeholder="Password" class="form-control">
-                        <button type="submit" class="btn btn-primary" onclick="login()">Sign in</button>
+                <div id="notLoggedIn" <?php echo get_cookie('isLoggedIn') == '0' ? 'hidden': 'visible'?>>
+                    <?php echo form_open('account/validate_credentials', array('class' => 'navbar-form pull-right')) ?>
+                        <?php echo form_input(array(
+                                    'name'          => 'login',
+                                    'id'            => 'login',
+                                    'placeholder'   => 'Username',
+                                    'class'         => 'form-control',
+                                    'value'         =>  (get_cookie('isLoggedIn') == NULL)? $this->session->username: '')) ?>
+                        <?php echo form_password(array(
+                                    'name'          => 'password',
+                                    'id'            => 'password',
+                                    'placeholder'   => 'Password',
+                                    'class'         => 'form-control')) ?>
+                       <?php echo form_submit(array(
+                                    'name'          => 'submit',
+                                    'value'         => 'Sign in',
+                                    'class'         => 'btn btn-primary')) ?>
                         <a href="<?php echo site_url('account/signup/') ?>" class="btn btn-default">Sign up</a>
-                    </form>
+                    <?php echo form_close() ?>
                 </div>
-                <div id="loggedIn" hidden>
+                <div id="loggedIn" <?php echo get_cookie('isLoggedIn') == '0' ? 'visible': 'hidden'?>>
                     <ul class="nav navbar-nav pull-right">
-                        <li><img class="nav-avatar navbar-brand" src="<?php echo base_url(); ?>img/user.jpeg" alt="" width="auto" height="auto">&nbsp&nbsp</li>
-                        <li><a href="account.php" class="navbar-brand navbar-username">BarushCZ</a></li>
+                        <li>
+                            <img class="nav-avatar navbar-brand" 
+                            src="<?php echo base_url(); ?>img/avatars/user<?php echo ($this->session->hasAvatar == 0)? $this->session->username : '' ?>.jpeg" 
+                            alt="user's avatar" width="auto" height="auto">&nbsp&nbsp
+                        </li>
+                        <li><a href="account.php" class="navbar-brand navbar-username"><?php echo $this->session->username ?></a></li>
                         <li class="dropdown" onclick="$('#subnav-bar').hide()">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
                             role="button" aria-haspopup="true" aria-expanded="false">
@@ -71,7 +87,7 @@
                                 <li><a href="userVideos.php">My videos</a></li>
                                 <li><a href="settings.php">Settings</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li onclick="logout()"><a>Log out</a></li>
+                                <li><a href="<?php echo site_url('account/logout/')?>">Log out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -98,4 +114,16 @@
         </div>
         <!-- /.container -->
     </nav>
+    
+    <!--IF JS IS DISABLED -->
+    <noscript>
+        <!--ALERT-->
+        <div class="container no-js">
+            <div class="alert alert-warning">
+                <strong>Warning!</strong><br> JavaScript must be enabled in order to use all the feaures available in DANCECENTRAL
+                    such as ratings and playing videos and music. Enable JavaScript by changing your browser options, then <a href="">try again</a>
+            </div> 
+       </div>
+  </noscript>
+    
 

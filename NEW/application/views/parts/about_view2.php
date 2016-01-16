@@ -2,6 +2,7 @@
 <!-- JUMPSTYLE - ABOUT -->
 <div class="row">
     <div class="col-md-6">
+        <h1 class="visible-print-block">ABOUT JUMPSTYLE</h1>
         <h3>ABOUT</h3>
         <p>
             Jumpstyle is an electronic dance style and music genre popular in Eastern Europe, as well as certain parts of Australia and the United States.
@@ -45,7 +46,7 @@
 <br>
 
 <!-- Page Header -->
-<div class="row">
+<div class="row hidden-print">
     <div class="col-md-2 ">
     </div>
     <div class="col-md-10 ">
