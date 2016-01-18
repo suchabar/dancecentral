@@ -1,15 +1,22 @@
 <?php 
     class Video_model extends CI_Model
     {
-        function getVideos($danceStyle, $pagination, $arrangement = 'date_of_upload', $order = 'desc')
+        function getVideos($danceStyle, $pagination, $arrangement, $order)
         {
             //LOAD ALL VIDEOS (of specific style) for specific page in specific order
-            //SAFE CONDITION AGAINST SQL INJECTION + $this->db->escape METHODS 
-            $danceStyleCondition = ($danceStyle < 5 && $danceStyle > 0) ? "WHERE dance_style = " . $this->db->escape($danceStyle) : '';
+            //SAFE CONDITION AGAINST SQL INJECTION - built in Query Builder for SQL
+            $data = array();      
+            $this->db->select('videos.*'); 
+            $this->db->from('videos');
+            $this->db->select('COALESCE(AVG(ratings.ratings),0) AS ratings'); 
+            $this->db->join('ratings', 'ratings.id_video = videos.id', 'left');
+            if($danceStyle > 0)$this->db->where('dance_style', $danceStyle);
+            $this->db->group_by('videos.id'); 
+            $this->db->order_by($arrangement, $order); 
+            //PAGINATION
             $paginationCondition = ($pagination != 0) ? 9*$pagination : 0;
-            $q = $this->db->query("SELECT videos.*, COALESCE(AVG(ratings.ratings),0) AS ratings FROM videos LEFT OUTER JOIN 
-                    ratings ON ratings.id_video = videos.id " . $danceStyleCondition . " GROUP BY videos.id " 
-                    . " ORDER BY " . $arrangement . " " . $order ." LIMIT 9 OFFSET ". $paginationCondition);  
+            $this->db->limit(9, $paginationCondition); 
+            $q = $this->db->get();
             if($q->num_rows() > 0)
             {
                 foreach($q->result() as $row)
@@ -19,12 +26,31 @@
             }
             return $data;
         }
-        //SELECT `id_video`, AVG(ratings) AS average FROM `ratings` GROUP BY id_video
-        //SELECT videos.id,name, AVG(ratings.ratings) AS ratings FROM videos RIGHT OUTER JOIN ratings ON ratings.id_video = videos.id GROUP BY videos.id
-        function getVideoDetail($videoId)
+        
+        function getUserVideos($username)
+        {
+            $data = array();      
+            $this->db->select('videos.*'); 
+            $this->db->from('videos');
+            $this->db->select('COALESCE(AVG(ratings.ratings),0) AS ratings'); 
+            $this->db->join('ratings', 'ratings.id_video = videos.id', 'left');
+            $this->db->where('videos.id_user', $username);
+            $this->db->group_by('videos.id'); 
+            $this->db->order_by('date_of_upload', 'desc'); 
+            $q = $this->db->get();
+            if($q->num_rows() > 0)
+            {
+                foreach($q->result() as $row)
+                {
+                    $data[] = $row;
+                }
+            }
+            return $data;
+        }
+        
+       function getVideoDetail($videoId)
         {
             $this->incrementVideoViews($videoId);
-            //QUERY BUILDER SAVE US FROM SQL INJECTIONS
             $this->db->select('*');
             $this->db->where('id', $videoId);
             $q = $this->db->get('videos');
@@ -53,13 +79,13 @@
         {
             $this->db->select('*');
             $this->db->where('id_video', $videoId);
-            $this->db->where('ip_address', $this->input->ip_address());
+            $this->db->where('id_user', $this->session->username);
             $q = $this->db->get('ratings');
             if($q->num_rows() == 0) 
             {
                 $newRating = array(
                 'id_video' => $videoId,
-                'ip_address' => $this->input->ip_address(),
+                'id_user' => $this->session->username,
                 'ratings' =>  $value);
                 $this->db->insert('ratings', $newRating);
                 return true;
@@ -67,10 +93,29 @@
             else
             {
                 $this->db->where('id_video', $videoId);
-                $this->db->where('ip_address', $this->input->ip_address());
+                $this->db->where('id_user', $this->session->username);
                 $this->db->set('ratings', $value, FALSE);
                 $this->db->update('ratings');
                 return false;
             } 
+        }
+        
+        function addVideo()
+        {
+             $newVideo = array(
+                'name' => $this->input->post('nameOfVideo'),
+                'date_of_upload' => date("Y-m-d H:i:s"),
+                'link' => $this->input->post('link'),
+                'i_am_on_video'=> $this->input->post('whoIsOnVideo'),
+                'dance_style'=>$this->input->post('danceStyle'),
+                'id_user' => $this->session->username,
+                'views' => 0);
+            $this->db->insert('videos', $newVideo);
+        }
+        
+        function deleteVideo()
+        {
+            $this->db->where('id', $this->uri->segment(3));
+            $this->db->delete('videos');
         }
     }

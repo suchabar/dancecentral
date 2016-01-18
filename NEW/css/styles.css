@@ -1,18 +1,23 @@
-body {
-
-}
-
 .no-js
 {
     margin-top: 20px;
 }
 
-.navbar-upper{
+.navbar-upper
+{
     margin-bottom: 0px;
     border:0px;
 }
 
-.navbar-lower{
+.video-info
+{
+    height: 34em;
+    background-color: lightgray;
+    border-right: 10px solid dimgray;
+}
+
+.navbar-lower
+{
     background-color: #3E3E3E;
     margin-bottom: 0px;
     border:0px;
@@ -22,24 +27,58 @@ body {
 {
     color: white !important;
 }
+
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus
+{
+  color: #fff;
+  background-color: #3E3E3E;
+}
+
 .nav-avatar
 {
     border-radius: 20px !important;
 }
 
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #3E3E3E;
-}
-
 .filtering-dropdown
 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
+.hiddenElement
+{
+    display:none;
+}
+
+.remove-video-icon
+{
+    margin-top: 2em;
+    width: 2em;
+}
+
+.removeComment-icon:hover,
+.thumbs-icon:hover,
+.remove-video-icon:hover
+{
+    opacity: 0.5;
+}
+
+.thumbs-icon
+{
+    width: 3em;
+}
+
+.removeComment-icon
+{
+    width: 2em;
+}
+
+.uploadButton
+{
+    margin-bottom: 10px;
+}
 .video-header{
     margin-bottom: 0px;
     margin-top: 15px;
@@ -56,9 +95,14 @@ body {
 {
     margin-top: -5px;
 }
+.video-date2
+{
+    margin-top: 20px;
+}
 
 div.video-preview-play
 {
+    margin-top: 5px;
     position: relative; 
 }
 
@@ -93,18 +137,17 @@ img.center {
 }
 
 .registration,
+.accountUpdate,
 .avatar-big,
 .avatar,
 .video-page
 {
     margin-top: 20px;
 }
-
-.video-info
+#avatar
 {
-    height: 34em;
-    background-color: lightgray;
-    border-right: 10px solid dimgray;
+    width:auto;
+    height:auto;
 }
 
 .new-comment
@@ -119,27 +162,6 @@ img.center {
     height: 32px;
     line-height: 32px;
  }
-
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
 
 .btn-play:focus,.btn-play:active
 {

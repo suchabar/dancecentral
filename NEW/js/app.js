@@ -14,7 +14,7 @@ showClear: false, readonly: true});
 $(".video-rating").rating({min:0, max:5, step:1, size:'xs', starCaptions: myCaptions, 
 showClear: false});
 
-//AJAX REQUEST HANDLING OF STAR RATING
+//AJAX REQUESTS HANDLING
 $('.video-rating').on('rating.change', function(event, value, caption)
 {
     $.ajax({
@@ -23,18 +23,74 @@ $('.video-rating').on('rating.change', function(event, value, caption)
         data: { rating: value }, 
         success:function(response) 
         {
-            //console.log(response);
-            var json = $.parseJSON(response);
-            var count = parseInt($('#ratings_count').text()) + 1;
-            if(json['first_time_rated'])$('#ratings_count').html(count);
-            $('#ratings').text(json['rating']);
+            try
+            {
+                var json = $.parseJSON(response);
+                var count = parseInt($('#ratings_count').text()) + 1;
+                if(json['first_time_rated'])$('#ratings_count').html(count);
+                $('#ratings').text(json['rating']);
+            }
+            catch (e){alert(response);}
         }  
     });
 });
 
-//AJAX REQUEST HANDLING OF THUMBS UP/DOWN RATING
+
+$('#new_comment').submit(function(event)
+{
+    var text = $("#comment_text").val();
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: window.location.origin + '/dancecentral/index.php/video/comment/',
+        data: { comment_text: text}, 
+        success:function(response) 
+        {
+            //REMOVE SUBMITTED TEXT IN TEXTAREA
+            $("#comment_text").val('');
+            //APPEND NEW COMMENT
+            $('.new-comment-header').before(response);     
+        }
+        
+    });   
+});
+
+function deleteComment(commentId)
+{
+    event.preventDefault();
+    $.ajax({
+        method: 'POST',
+        url: window.location.origin + '/dancecentral/index.php/video/deleteComment/'+commentId,
+        success:function(response) 
+        {
+            console.log(response);
+            //DETACH VIDEO
+            $('.comment' + commentId).detach();  
+        }
+        
+    });   
+}
+
+$('.delete_video').submit(function(event)
+{
+    event.preventDefault();
+    var videoId = $(this).attr('id');
+    $.ajax({
+        method: 'POST',
+        url: window.location.origin + '/dancecentral/index.php/video/deleteVideo/'+videoId,
+        success:function(response) 
+        {
+            //DETACH VIDEO
+            $('.video' + videoId).detach();  
+        },
+        
+    });   
+    
+});
+
 function thumbs(commentId, thumb)
 {
+    event.preventDefault();
     $.ajax({
         method: 'POST',
         url: window.location.origin + '/dancecentral/index.php/video/thumbs/',
@@ -43,18 +99,17 @@ function thumbs(commentId, thumb)
         }, 
         success:function(msg) 
         {
-                if(msg.substring(0, 3) === 'You')alert(msg)
-                else 
-                {
-                    var value = parseInt($('.votes' + commentId).text()) + parseInt(thumb);
-                    console.log(value);
-                    $('.votes' + commentId).html(value>0 ? '+' + value: value);
-                }
+            if(msg.length > 3)alert(msg)
+            else 
+            {
+                var value = parseInt($('.votes' + commentId).text()) + parseInt(thumb);
+                $('.votes' + commentId).html(value>0 ? '+' + value: value);
+            }
         }
         });   
 }  
 
-//JQUERY DYNAMIC VALIDATION OF SIGN UP FORM 
+//JQUERY DYNAMIC VALIDATIONS OF SIGN UP FORM 
 $('.password').keyup(function()
 {
     if($("#passwordInput").val().length > 3)
@@ -115,24 +170,32 @@ $('#username').keyup(function()
     }
 });
 
- 
-
-//Load image and display as avatar in sign up page
-$(document).on('change', '.btn-file :file', function() 
+$("#link").keyup(function()
 {
-    var input = $(this),
-        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    
-    document.getElementById("fileinput-new").innerHTML = label;
-    
-    var selectedFile = input.get(0).files[0];
-    var reader = new FileReader();
-    reader.onload = function(event) 
+    if($("#link").val().length == 11)
     {
-        document.getElementById("avatar").src = event.target.result;
-    };
-    reader.readAsDataURL(selectedFile);    
+        $("#linkField").addClass("has-success has-feedback");
+        $("#linkSpan").addClass("glyphicon glyphicon-ok");
+    }
+    else
+    {
+        $("#linkField").removeClass("has-success has-feedback");
+        $("#linkSpan").removeClass("glyphicon glyphicon-ok");
+    }
+});
+
+$("#nameOfVideo").keyup(function()
+{
+    if($("#nameOfVideo").val().length > 5)
+    {
+        $("#nameOfVideoField").addClass("has-success has-feedback");
+        $("#nameOfVideoSpan").addClass("glyphicon glyphicon-ok");
+    }
+    else
+    {
+        $("#nameOfVideoField").removeClass("has-success has-feedback");
+        $("#nameOfVideoSpan").removeClass("glyphicon glyphicon-ok");
+    }
 });
 
 $('.filter-dropdown a').click(function(){

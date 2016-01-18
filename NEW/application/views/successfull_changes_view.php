@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-sm-12">
             <br>
-            <legend>Registration of new awesome dancer :-3</legend>
+            <legend>Account changes</legend>
                 <!--SUCCESS ALERT-->
                 <div class="alert alert-success fade in" >
-                    <strong>Success! </strong> You can now login as registred dancer :)
+                    <strong>Success! </strong> Changes were successfully saved :)
                 </div>
                 
         </div>

@@ -6,12 +6,6 @@
         <div class="col-sm-12">
             <?php $attributes = array('class' => 'form-horizontal registration');
                 echo form_open('account/register', $attributes) ?>
-                <!--SUCCESS ALERT-->
-                <div class="alert alert-success fade in" id="success-alert" <?php echo (isset($formSent))? 'visible': 'hidden' ?>>
-                    <a type="button" class="close" data-dismiss="alert">&times;</a>
-                    <strong>Success! </strong> You can now login as registred dancer :)
-                </div>
-                
                 <?php echo validation_errors('<div class="alert alert-warning alert-dismissible" role="alert">
                                                     <button type="button" class="close" data-dismiss="alert" 
                                                      aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -97,3 +91,5 @@
         </div>
     </div>
     <!--./row-->
+<!-- SKIN CSS --> 
+<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" rel="stylesheet">  

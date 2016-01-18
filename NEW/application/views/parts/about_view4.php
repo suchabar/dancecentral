@@ -33,3 +33,6 @@
         src="http://www.youtube.com/embed/9nqRR6N2c78?start=105"></iframe>
     </div>
 </div>
+
+<!-- SKIN CSS --> 
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  

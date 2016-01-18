@@ -13,16 +13,17 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
-
+    
+    <!-- Stylesheet for star rating -->
+    <link href="<?php echo base_url(); ?>css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+    
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>css/styles.css" rel="stylesheet">
 
-    <!-- Stylesheet for star rating -->
-    <link href="<?php echo base_url(); ?>css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- Navigation -->
-    <nav class="navbar navbar-upper navbar-inverse navbar-static-top" role="navigation">
+    <nav class="navbar navbar-upper navbar-inverse navbar-static-top" >
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -74,18 +75,18 @@
                     <ul class="nav navbar-nav pull-right">
                         <li>
                             <img class="nav-avatar navbar-brand" 
-                            src="<?php echo base_url(); ?>img/avatars/user<?php echo ($this->session->hasAvatar == 0)? $this->session->username : '' ?>.jpeg" 
+                            src="<?php echo base_url() . 'img/avatars/'. (($this->session->hasAvatar == 0) ? $this->session->avatar: 'user.jpeg') ?>" 
                             alt="user's avatar" width="auto" height="auto">&nbsp&nbsp
                         </li>
-                        <li><a href="account.php" class="navbar-brand navbar-username"><?php echo $this->session->username ?></a></li>
+                        <li><a href="<?php echo site_url('account/') ?>" class="navbar-brand navbar-username"><?php echo $this->session->username ?></a></li>
                         <li class="dropdown" onclick="$('#subnav-bar').hide()">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
                             role="button" aria-haspopup="true" aria-expanded="false">
                             <span class="glyphicon glyphicon-cog"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="account.php">My profile</a></li>
-                                <li><a href="userVideos.php">My videos</a></li>
-                                <li><a href="settings.php">Settings</a></li>
+                                <li><a href="<?php echo site_url('account/') ?>">My profile</a></li>
+                                <li><a href="<?php echo site_url('video/userVideos/'. $this->session->username) ?>">My videos</a></li>
+                                <li><a href="<?php echo site_url('account/settings/') ?>">Settings</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="<?php echo site_url('account/logout/')?>">Log out</a></li>
                             </ul>
@@ -116,14 +117,15 @@
     </nav>
     
     <!--IF JS IS DISABLED -->
-    <noscript>
-        <!--ALERT-->
-        <div class="container no-js">
-            <div class="alert alert-warning">
-                <strong>Warning!</strong><br> JavaScript must be enabled in order to use all the feaures available in DANCECENTRAL
-                    such as ratings and playing videos and music. Enable JavaScript by changing your browser options, then <a href="">try again</a>
-            </div> 
-       </div>
-  </noscript>
+    
+    <!--ALERT-->
+    <div class="container no-js">
+        <noscript>
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong><br> JavaScript must be enabled in order to use all the feaures available in DANCECENTRAL
+                        such as ratings and playing videos and music. Enable JavaScript by changing your browser options, then <a href="">try again</a>
+                </div> 
+        </noscript>
+    </div>
     
 

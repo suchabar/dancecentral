@@ -5,51 +5,54 @@ class Home extends CI_Controller
     function index()
     {
         $this->setSessionData();
+        $this->loadVideos();
+    }
+    
+    function loadVideos()
+    {
         //GET VIDEOS
-        $this->load->model('video_model');
-        $data['videos'] = $this->video_model->getVideos($this->session->danceStyle, $this->session->page);
+        $this->load->model('video_model'); 
+        $data['videos'] = $this->video_model->getVideos($this->session->danceStyle, $this->session->offset + $this->session->page, 
+                                                      $this->session->arrangement, $this->session->order);  
         //GENERATE PAGE
         $data['pageContent'] = 'main_view';
         $this->load->view('includes/template', $data);
-        
     }
     
-     function setSessionData()
+    function setSessionData()
     {
         $sessionData = array(
             'danceStyle'  => 0,
             'page' => 0,
-            'order' => 'Date added (newest > oldest)'
+            'offset' => 0,
+            'arrangement'  => 'date_of_upload',
+            'order' => 'desc',
+            'orderTitle' => 'Date added (newest > oldest)'
         );
         $this->session->set_userdata($sessionData);
     }
     
     function filter()
     {
-        $this->load->model('video_model');
         $this->session->set_userdata('danceStyle', $this->uri->segment(3));
-        $data['videos'] = $this->video_model->getVideos($this->session->danceStyle, $this->session->page);
-        //GENERATE PAGE
-        $data['pageContent'] = 'main_view';
-        $this->load->view('includes/template', $data);
+        $this->loadVideos();
     }
-    
+    //LOAD VIDEOS AND RETURN ARRANGED ACCORDING TO $this->uri->segment(3)
+    /*
+        1 - Date added (newest > oldest)
+        2 - Date added (oldest > newest)
+        3 - Best rated
+        4 - Worst rated
+    */
     function arrangement()
     {
-        //LOAD VIDEOS AND RETURN ARRANGED ACCORDING TO $this->uri->segment(3)
-        /*
-            1 - Date added (newest > oldest)
-            2 - Date added (oldest > newest)
-            3 - Best rated
-            4 - Worst rated
-        */
-        $this->session->set_userdata('order', $this->getOrder($this->uri->segment(3), $this->uri->segment(4)));
-        $this->load->model('video_model'); 
-        $data['videos'] = $this->video_model->getVideos($this->session->danceStyle, $this->session->page, 
-                                                        $this->uri->segment(3), $this->uri->segment(4));       
-        //GENERATE PAGE
-        $data['pageContent'] = 'main_view';
-        $this->load->view('includes/template', $data);
+         $sessionData = array(
+            'arrangement'  => $this->uri->segment(3),
+            'order' => $this->uri->segment(4),
+            'orderTitle' => $this->getOrder($this->uri->segment(3), $this->uri->segment(4))
+        );
+        $this->session->set_userdata($sessionData);
+        $this->loadVideos();
     }
     
     function getOrder($a, $b)
@@ -68,12 +71,15 @@ class Home extends CI_Controller
     
     function page()
     {
-        // $this->load->model('video_model');
-        // $data['danceStyle'] = $this->uri->segment(3);
-        // $data['videos'] = $this->video_model->getVideos($data['danceStyle'], $this->data['page']);
-        // //GENERATE PAGE
-        // $data['pageContent'] = 'main_view';
-        // $this->load->view('includes/template', $data);
+        $this->session->set_userdata('page', $this->uri->segment(3));
+        $this->loadVideos();
+    }
+    function offset()
+    {
+        $oldOffset = $this->session->offset;
+        $newOffset = ($this->uri->segment(3)*5) + $oldOffset;
+        if($newOffset >= 0)$this->session->set_userdata('offset', $newOffset);
+        $this->loadVideos();
     }
     
     //CHANGE OF "PAGECONTENT" IN TEMPLATE

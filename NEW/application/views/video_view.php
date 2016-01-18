@@ -14,7 +14,7 @@
         <div class="col-md-4 video-info">
             <div class="row">
                 <div class="col-md-5">
-                    <img class="img-responsive avatar-big img-rounded " src="<?php echo base_url(); ?>img/avatars/user<?php echo ($uploadingUser->hasAvatar == 0)? $video->id_user : '' ?>.jpeg" 
+                    <img class="img-responsive avatar-big img-rounded " src="<?php echo base_url() . 'img/avatars/'. (($uploadingUser->hasAvatar == 0) ? $uploadingUser->avatar: 'user.jpeg') ?>"
                     alt="Avatar of the user who uploaded the video">
                 </div>
                 <div class="col-md-7">
@@ -57,48 +57,80 @@
             <div class="page-header">
                 <h2>Comments </h2>
             </div>
+            <div class="listOfComments">
             <?php foreach ($comments as $comment) : ?>
-            <div class="row comment">
+            <div class="row comment<?php echo $comment->id ?> ">
             <!--AVATAR of user-->
                 <div class="col-md-2">
-                    <img class="img-responsive img-rounded avatar" src="<?php echo base_url(); ?>img/avatars/user<?php echo $comment->id_user ?>.jpeg" alt="" width="auto" height="auto">
+                    <img class="img-responsive img-rounded avatar" src="<?php echo base_url() . 'img/avatars/'. (($comment->hasAvatar == 0) ? $comment->avatar: 'user.jpeg') ?>"
+                     alt="Avatar of user who posted a comment" width="auto" height="auto">
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-4">
                     <h4><?php echo $comment->id_user ?> 
-                        &nbsp&nbsp&nbsp<span><small><?php date('d/m/Y', strtotime($comment->date)) ?></small></span>
-                        &nbsp&nbsp&nbsp<button class="btn-link" onclick="thumbs(<?= $comment->id ?>, 1);">
-                            <span class="glyphicon glyphicon-thumbs-up"></span></button>
-                        &nbsp<button class="btn-link" onclick="thumbs(<?= $comment->id ?>,-1);">
-                           <span class="glyphicon glyphicon-thumbs-down"></span></button>
-                        &nbsp&nbsp&nbsp<small><b><span class="votes<?= $comment->id ?>"><?php echo ($comment->ratings > 0)? '+' . $comment->ratings: $comment->ratings ?></span></b></small>
-                        </h4>
+                        &nbsp;&nbsp;&nbsp;<span><small><?php echo date("d/m/Y", strtotime($comment->date)) ?></small></span>
+                   </h4> 
+                   <br>
                     <p>
                         <?php echo $comment->text ?> 
                     </p>
                 </div>
+                <div class="col-md-1">
+                     <form action="<?php echo site_url('video/thumbs');?>" onsubmit="thumbs(<?= $comment->id ?>, 1);"
+                         method="post" accept-charset="utf-8">
+                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsup.png" 
+                        class="btn thumbs-icon btn-link <?php echo get_cookie('isLoggedIn') == '0' ? '': 'disabled' ?>" >
+                        <?php echo form_hidden('commentId',$comment->id);
+                              echo form_hidden('ratingValue', 1);
+                              echo form_close();?>
+               </div>
+               <div class="col-md-1">
+                     <form action="<?php echo site_url('video/thumbs');?>" onsubmit="thumbs(<?= $comment->id ?>, -1);"
+                         method="post" accept-charset="utf-8">
+                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsdown.png" 
+                        class="btn thumbs-icon btn-link <?php echo get_cookie('isLoggedIn') == '0' ? '': 'disabled' ?>" >
+                        <?php echo form_hidden('commentId',$comment->id);
+                              echo form_hidden('ratingValue', -1);
+                              echo form_close();?>
+                </div> 
+                <div class="col-md-1">
+                    <h4>
+                      <span class="votes<?= $comment->id ?>">
+                            <?php echo ($comment->ratings > 0)? "+" . $comment->ratings: $comment->ratings ?>
+                      </span>
+                    </h4>
+                </div> 
+                <div class="col-md-offset-1 col-md-2">
+                     <!--DELETE COMMENT-->
+                    <?php echo form_open('video/deleteComment/'.$comment->id, 
+                        array('id'=>$comment->id, 'class' => ($this->session->userRole == 0)? '': 'hiddenElement',
+                        'onsubmit' => 'deleteComment('.$comment->id.')'));?>
+                        <input type="image" name="submit"
+                        src='<?php echo base_url(); ?>img/bin.png' class="removeComment-icon">
+                        <?php echo form_close(); ?>
+                </div>
             </div>
-            <br>
             <?php endforeach; ?>
+            </div>
 
             <!--Add new comment form-->
-            <div class="page-header hidden-print">
+            <div class="page-header hidden-print new-comment-header">
                 <h4>New comment</h2>
             </div>
             <div class="row comment hidden-print" <?php echo get_cookie('isLoggedIn') == '0' ? 'visible': 'hidden'?>>
-                <?php echo form_open('video/comment/'); ?>
+                <?php echo form_open('video/comment/', array('id'=>'new_comment')); ?>
                     <fieldset>
                         <!--AVATAR of user-->
                         <div class="col-md-2">
-                                <img class="img-responsive img-rounded avatar" src="<?php echo base_url(); ?>img/avatars/user<?php echo ($this->session->hasAvatar == 0)? $this->session->username : '' ?>.jpeg"
+                                <img class="img-responsive img-rounded avatar" src="<?php echo base_url() . 'img/avatars/'. (($this->session->hasAvatar == 0) ? $this->session->avatar: 'user.jpeg') ?>"
                                 alt="Your avatar - of logged in user" width="auto" height="auto">
                         </div>
                         <div class="col-md-10">
-                            <?php echo form_hidden('uploadingPerson', $this->session->username) ?>
                             <h4 id='newCommentUser'><?php echo $this->session->username ?>
                                  &nbsp&nbsp&nbsp<small><span><?php echo date('d/m/Y'); ?></span></small>
                             </h4>
                             <?php echo form_textarea(array(
                                 'name'          => 'comment_text',
+                                'id'            => 'comment_text',
                                 'class'         => 'form-control new-comment', 
                                 'rows'          =>  3, 
                                 'placeholder'   => "Write something here...",
@@ -120,3 +152,5 @@
         </div>
     </div>
     
+<!-- SKIN CSS --> 
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  

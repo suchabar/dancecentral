@@ -31,32 +31,36 @@
                 'email'=>$this->input->post('email'),
                 'role'=> 1,
                 'dance_style'=> $this->input->post('danceStyle'),
-                'skin'=> 0,
+                'skin'=> 1,
                 'hasAvatar' => 1
             );
             return $this->db->insert('users', $newUser);
         }
         
-        public function uploadAvatar($fileName)
+        public function uploadImage()
         {
-                $config['upload_path']          = APPPATH.'../img/avatars/';
-                $config['file_name']            = 'user'.$fileName.'jpeg';
-                $config['allowed_types']        = 'jpeg|jpg|png';
-                $config['max_size']             = 3000;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-
-                $this->load->library('upload', $config);
-                if (!$this->upload->do_upload()) 
-                {
-                        $error = array('error' => $this->upload->display_errors());
-                        echo var_dump($error);
-                        die();
-                }
-                else
-                {
-                        return true;
-                }
+            $config = array(
+                'file_name'     => $this->session->username,
+                'allowed_types' => 'jpg|jpeg|png',
+                'upload_path' => "./img/avatars/",
+                'max_size' => 4000,
+                'overwrite'=> true
+            );
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('newAvatar')) 
+            {
+                    $error = array('error' => $this->upload->display_errors());
+                    return $error;
+            }
+            else
+            {
+                $img = $this->upload->data();
+                $this->session->set_userdata('avatar', $img['file_name']);
+                $this->db->set('avatar', $img['file_name']);
+                $this->db->where('username', $this->session->username);
+                $this->db->update('users');
+                return $img;
+            }
         }
         
         function getSaltedHash($password)
@@ -69,10 +73,27 @@
 	       return password_verify($password, $hashFromDb);
         }
 	
-        function updateAccount($account)
-        { //SETTINGS NAPR
-            $this->db->where('id', 14);
-            $this->db->update('account', $account);
+        function updateAccount()
+        {
+            $this->db->set('email', $this->input->post('email'));
+            $this->db->set('dance_style', $this->input->post('danceStyle'));
+            $this->db->where('username', $this->session->username);
+            return $this->db->update('users');
+        }
+        
+        function changePassword()
+        {
+            $this->db->set('password', $this->getSaltedHash($this->input->post('password')));
+            $this->db->where('username', $this->session->username);
+            return $this->db->update('users');
+        }
+        
+        function setSkin()
+        {
+            $this->db->set('skin', $this->input->post('skin'));
+            $this->db->where('username', $this->session->username);
+            $this->db->update('users');
+            $this->session->set_userdata('skin', $this->input->post('skin'));
         }
         
         function banAccount()

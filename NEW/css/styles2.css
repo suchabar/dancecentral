@@ -1,0 +1,66 @@
+body 
+{
+    background-color: lightpink;
+    font-family: "Comic Sans MS" !important;
+}
+
+.star-rating .caption
+{
+    display: none;
+}
+.btn
+{
+    border-radius: 24px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: hotpink;
+  border-color: deeppink;
+}
+.btn-primary:hover
+{
+    background-color: deeppink;
+    border-color: deeppink;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+
+  background-color: deeppink;
+  border-color: hotpink;
+}
+
+.video-info
+{
+    height: 34em;
+    background-color: white;
+    border-right: 10px solid deeppink;
+}
+
+.navbar-lower
+{
+    background-color: deeppink;
+}
+
+.navbar-username, .navbar-title
+{
+    color: white !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus
+{
+  color: #fff;
+  background-color: deeppink;
+}
+
+.navbar-inverse .navbar-nav>li>a 
+{
+    color: white;
+}
