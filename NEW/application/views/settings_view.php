@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for changes of user's profile
+ */ 
+?>
 <!-- Page Content -->
     <div class="container">
         <!-- Page Header -->

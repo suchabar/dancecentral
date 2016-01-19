@@ -1,3 +1,9 @@
+<?php
+/**
+ * This file contains view for about page of Cutting shapes
+ */ 
+?>
+
 <div class="container">
 <!-- CUTTING SHAPES - ABOUT -->
 <div class="row">
@@ -26,10 +32,8 @@
 
 <!-- EXAMPLE VID-->
 <div class="row hidden-print">
-    <div class="col-md-2 ">
-    </div>
-    <div class="col-md-10 ">
-        <iframe class="vid-responsive" width="720" height="480" 
+    <div class="col-md-offset-2 col-md-8 ">
+        <iframe class="vid-responsive" 
         src="http://www.youtube.com/embed/9nqRR6N2c78?start=105"></iframe>
     </div>
 </div>

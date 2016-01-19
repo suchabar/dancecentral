@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for music page of Freestep
+ */ 
+?>
 <div class="container">
 <!-- FREESTEP - MUSIC -->
 <div class="row">

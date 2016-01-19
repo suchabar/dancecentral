@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for about page of Dnb step
+ */ 
+?>
 <div class="container">
 <!-- DNB STEP - ABOUT -->
 <div class="row">
@@ -46,12 +51,11 @@
 
 <!-- Page Header -->
 <div class="row hidden-print">
-    <div class="col-md-2 ">
-    </div>
-    <div class="col-md-10 ">
-        <iframe class="vid-responsive" width="720" height="480" 
+    <div class="col-md-offset-2 col-md-8 ">
+        <iframe class="vid-responsive"
         src="http://www.youtube.com/embed/SXN1vlYygsY?start=68"></iframe>
     </div>
+	
 </div>
 
 <!-- SKIN CSS --> 

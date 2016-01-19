@@ -1,6 +1,15 @@
 <?php 
+	/**
+	 * 	Model Comment is used for the direct communication and operations over tables "comments" and "thumbs" in database. Models are generally returning the specific data from database to Controllers or just changing the content of database somehow. Specifically this model gets all comments for specific video, adds new comment, deletes comment and rates comment.
+	 * 	@package Models
+	 */ 
     class Comment_model extends CI_Model
     {
+		/**
+		 * Gets all comments for specific video.
+		    @param int $idVideo Id of video
+		 *  @return array Array of comments for specific video 
+		 */
         function getComments($idVideo)
         {
             $data = array();
@@ -18,7 +27,10 @@
             }
             return $data;
         }
-    
+		/**
+		 *  Adds new comment.
+		 *  @return array Array representing new comment to be added 
+		 */
         function addComment()
         {
             $newComment = array(
@@ -32,13 +44,21 @@
             $newComment['id'] = $this->db->insert_id();
             return $newComment;
         }
-        
+        /**
+		 *  Deletes specific comment.
+		 */
         function deleteComment()
         {
             $this->db->where('id', $this->uri->segment(3));  
             $this->db->delete('comments');
         }
         
+		/**
+		 *  Adds rating for specific comment by value +1/-1.
+		 *  @param int $value +1/-1 value
+		 *  @param int $commentId Id of video
+		 *  @return bool If we have already rated or not 
+		 */
         function rateComment($value, $commentId)
         {
             $this->db->select('*');

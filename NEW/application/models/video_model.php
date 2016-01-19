@@ -1,9 +1,20 @@
 <?php 
+	/**
+	 * 	Model Video is used for the direct communication and operations over tables "videos" and "ratings" in database. Models are generally returning the *specific data from database to Controllers or just changing the content of database somehow. Specifically this model gets all videos according to *specific conditions, gets detail of video, increment video views, rates specific video, adds or deletes specific video.
+	 * 	@package Models
+	 */ 
     class Video_model extends CI_Model
     {
+		/**
+		 *  Gets all videos of specific dance style with specific offset in specific order
+		 *  @param int $danceStyle Id of dance style - 1-4 (dnb step - 1, jumpstyle - 2, freestep - 3, cutting shapes - 4)
+		*	@param int $pagination Offset when getting the videos
+		 *  @param string $arrangement According to what we want to arrange the videos - date/ratings
+		*	@param string $order DESC/ASC order
+		 *  @return array Array of videos 
+		 */
         function getVideos($danceStyle, $pagination, $arrangement, $order)
         {
-            //LOAD ALL VIDEOS (of specific style) for specific page in specific order
             //SAFE CONDITION AGAINST SQL INJECTION - built in Query Builder for SQL
             $data = array();      
             $this->db->select('videos.*'); 
@@ -26,7 +37,11 @@
             }
             return $data;
         }
-        
+        /**
+		 *  Retrieves all videos of specific user
+		*	@param string $username Username of user
+		 *  @return array Array of videos 
+		 */
         function getUserVideos($username)
         {
             $data = array();      
@@ -47,7 +62,11 @@
             }
             return $data;
         }
-        
+        /**
+		 *  Retrieves information about specific video including average from ratings.
+		*	@param int $videoId Id of video
+		 *  @return object Object containing the information about video
+		 */
        function getVideoDetail($videoId)
         {
             $this->incrementVideoViews($videoId);
@@ -67,14 +86,22 @@
             $data->ratings_count = $this->db->count_all_results();  
             return $data;
         }
-        
+        /**
+		 *  Updates the "views" field by value +1 for specific video
+		*	@param int $id Id of video
+		 */
         function incrementVideoViews($id)
         {
             $this->db->where('id', $id);
             $this->db->set('views', 'views+1', FALSE);
             $this->db->update('videos');
         }
-        
+        /**
+		 *  Add ratings for specific video.
+			@param int $value Ratings - 1-5 (stars)
+			@param int $videoId Id of video
+		 *  @return bool If user has rated first time for the specific video
+		 */
         function rateVideo($value, $videoId)
         {
             $this->db->select('*');
@@ -99,7 +126,9 @@
                 return false;
             } 
         }
-        
+        /**
+		 *  Inserts new video into database.
+		 */
         function addVideo()
         {
              $newVideo = array(
@@ -112,7 +141,9 @@
                 'views' => 0);
             $this->db->insert('videos', $newVideo);
         }
-        
+        /**
+		 *  Deletes specific video.
+		 */
         function deleteVideo()
         {
             $this->db->where('id', $this->uri->segment(3));

@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for displaying success after registration
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
 

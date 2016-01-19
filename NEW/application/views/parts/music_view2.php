@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for music page of Jumpstyle
+ */ 
+?>
 <div class="container">
 <!-- JUMPSTYLE - MUSIC -->
 <div class="row">

@@ -1,6 +1,15 @@
 <?php 
+	/**
+	 * 	Model Account is used for the direct communication and operations over table "users" in database. Models are generally returning the specific data *from database to Controllers or just changing the content of database somehow. Specifically this model is getting information about account, validates *credentials after login, adding new user and updating user information.
+	 * 	@package Models
+	 */ 
     class Account_model extends CI_Model
     {
+		/**
+		 * Gets information about specific user according to its username.
+		 *  @param string $username Username of specific user
+		 *  @return object Data about specific user 
+		 */
         function getAccount($username)
         {
             //QUERY BUILDER SAVE US FROM SQL INJECTIONS
@@ -9,7 +18,10 @@
             $q = $this->db->get('users');
             if($q->num_rows() == 1) return $q->result()[0];
         }
-        
+        /**
+		 * Checks if login process was successful.
+		 * @return bool If credentials matches
+		 */
         function validate()
         {
             $this->db->where('username', $this->input->post('login'));
@@ -21,7 +33,10 @@
             }
             else return false;
         }
-        
+         /**
+		 * Add new user into database.
+		 * @return bool If insertion of the new user was successful
+		 */
         function addUser()
         {
             $newUser = array(
@@ -36,7 +51,10 @@
             );
             return $this->db->insert('users', $newUser);
         }
-        
+         /**
+		 * Creates or replaces existing image avatar of specific user.
+		 * @return bool If upload of image was successful
+		 */
         public function uploadImage()
         {
             $config = array(
@@ -62,17 +80,29 @@
                 return $img;
             }
         }
-        
+        /**
+		 * Help method which creates from password salted hashed password
+		   @param string $password Inserted password of user
+		 * @return string Salted hashed password
+		 */
         function getSaltedHash($password)
         {
             return password_hash($password, PASSWORD_BCRYPT, array('cost' => 11));
         }
-        
+        /**
+		 * Help method which verifies if two salted hashed passwords match
+		 *  @param string $password Inserted password of user
+		 *  @param string $hashFromDb Hashed password from database
+		 * @return bool If passwords match
+		 */
         function passwordVerify($password, $hashFromDb)
         {
 	       return password_verify($password, $hashFromDb);
         }
-	
+		/**
+		 *  Updates information about user.
+		 *  @return bool If update of user was successful
+		 */
         function updateAccount()
         {
             $this->db->set('email', $this->input->post('email'));
@@ -80,25 +110,25 @@
             $this->db->where('username', $this->session->username);
             return $this->db->update('users');
         }
-        
+        /**
+		 *  Updates password of user.
+		 *  @return bool If update of password was successful
+		 */
         function changePassword()
         {
             $this->db->set('password', $this->getSaltedHash($this->input->post('password')));
             $this->db->where('username', $this->session->username);
             return $this->db->update('users');
         }
-        
+        /**
+		 *  Updates selected skin of user and saves the information about new skin into session.
+		 */
         function setSkin()
         {
             $this->db->set('skin', $this->input->post('skin'));
             $this->db->where('username', $this->session->username);
             $this->db->update('users');
             $this->session->set_userdata('skin', $this->input->post('skin'));
-        }
-        
-        function banAccount()
-        {
-            
         }
         
     }

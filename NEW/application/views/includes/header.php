@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for header.
+ */ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

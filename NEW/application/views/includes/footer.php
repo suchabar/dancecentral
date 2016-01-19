@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for footer.
+ */ 
+?>
             <hr>
 
             <footer>

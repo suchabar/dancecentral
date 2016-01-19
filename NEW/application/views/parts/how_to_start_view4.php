@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for how_to_start page for Cutting shapes
+ */ 
+?>
 <div class="container">
 <!-- CUTTING SHAPES - HOW TO START -->
 <div class="row">
@@ -28,14 +33,14 @@
 <div class="hidden-print">
     <!-- TUTORIALS -->
     <div class="row">
-        <div class="col-md-10 ">
+        <div class="col-md-8 ">
             <h2>CUTTING SHAPES - BASICS</h2>
             <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/HAQq1iOqx0E"></iframe>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-10 ">
+        <div class="col-md-8 ">
             <h2>CUTTING SHAPES - ADVANCED</h2>
             <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/jCf5f892GEs"></iframe>
         </div>

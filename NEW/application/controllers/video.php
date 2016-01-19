@@ -1,7 +1,14 @@
-<?php 
-
+<?php
+/**
+ * 	Controller Video is used to display different views including video_view, user_videos_view and upload_video_view and manage operations such as loading the video detail, videos of specific user, deleting video, adding video into database, rating video, adding comment to video and rating the comment of video
+ * 	@package Controllers
+ */ 
 class Video extends CI_Controller
 {
+	 /**
+     * Calls function of Video_model to get information about clicked video, then calls function of Comment_model to get comments related to the video and finally calls function of Account_model to get information(name of avatar) about people who commented the video. After it sets the pageContent of template file to video_view.
+     *  @return void
+     */
     function index()
     {
         //GET VIDEO DETAILS 
@@ -19,7 +26,10 @@ class Video extends CI_Controller
         $this->load->view('includes/template', $data);
         
     }
-    
+    /**
+     *  Sets the session data for video detail page.
+     *  @return void
+     */
     function setSessionData()
     {
         $sessionData = array(
@@ -28,7 +38,10 @@ class Video extends CI_Controller
         );
         $this->session->set_userdata($sessionData);
     }
-    
+    /**
+     *  Calls function of Video_model to get videos of specific user. After it sets the pageContent of template file to user_videos_view.
+     *  @return void
+     */
     function userVideos()
     {
         //GET VIDEO DETAILS 
@@ -39,20 +52,31 @@ class Video extends CI_Controller
         $data['pageContent'] = 'user_videos_view';
         $this->load->view('includes/template', $data);
     }
-    
+    /**
+     * Sets the pageContent of template file to upload_video_view.
+     *  @return void
+     */
     function newVideo()
     {
         //GENERATE PAGE
         $data['pageContent'] = 'upload_video_view';
         $this->load->view('includes/template', $data);
     }
-    
+    /**
+     * Sets the session data and calls index function above to load all the information about video including comments and after sets the pageContent of template file to video_view.
+     *  @return void
+     */
     function detail()
     {
         $this->setSessionData();
         $this->index();        
     }
-    
+    /**
+     *  Validates information about new video which should be uploaded - such as name and link of the video. If validation goes well we 
+     *  call a function from Video_model to actually add new video to database and then we redirect to page of user videos.
+     *  If validation fails, we stay on the same page and send data into context - bool that validation failed.
+     *  @return void
+     */
     function uploadVideo()
     {
         //VALIDATION OF FORM 
@@ -72,7 +96,10 @@ class Video extends CI_Controller
             redirect('video/userVideos/'.$this->session->username);
         }
     }
-    
+    /**
+     *  Calls function of Video_model to delete specific video. Then we test if the post request which called this method is ajax or not. If it is ajax request we do nothing - Javascipt would only remove specific element from page. If it isn't ajax request, we redirect to the same page to see the result - removed video.
+     *  @return void
+     */
     function deleteVideo()
     {
         $this->load->model('video_model');
@@ -83,10 +110,13 @@ class Video extends CI_Controller
         }
         else redirect('video/userVideos/'.$this->session->username);
     }
-    
+    /**
+     *  Firstly we test through cookie, if the person who wants to rate is logged in, if it isn't we echo the warning otherwise the method calls function of Video_model to rate the video which we watch with value 1-5 (stars). This method can be called only through AJAX (more information in documentation), so after rating the video we just echo the information if we rated the first time for this video, if yes, JS will add +1 to the value of "Rated x people" string and then we echo also the new updated average from all ratings for the video - these two information are encoded in JSON to be easily parsed then.
+     *  @return void
+     */
     function rateVideo()
     {
-        if(get_cookie('isLoggedIn') == NULL)echo 'Only logged users can vote !';
+        if(get_cookie('isLoggedIn') == NULL)echo 'Only logged users can rate !';
         else
         {
             $rating = $this->input->post('rating');
@@ -101,7 +131,10 @@ class Video extends CI_Controller
             echo $json;
         }
     }
-    
+     /**
+     *  Calls function of Comment_model to delete specific comment. Then we test if the post request which called this method is ajax or not. If it is ajax request we do nothing - Javascipt would only remove specific element from page. If it isn't ajax request, we redirect to the same page to see the result - removed comment.
+     *  @return void
+     */
     function deleteComment()
     {
         $this->load->model('comment_model');
@@ -112,7 +145,10 @@ class Video extends CI_Controller
         }
         else redirect('video/detail/'.$this->session->videoId);
     }
-    
+    /**
+     *  Calls function of Comment_model to rate specific comment with value +1/-1. Then we test if the post request which called this method is ajax or not. If it is ajax request and the person has already voted, we echo the warning, that he has already voted, if the person hasn't voted yet, we do nothing. JS will just add +1/-1 to the total value displayed. If it isn't ajax request, we redirect to the same page to see the result - added rating.
+     *  @return void
+     */
     function thumbs()
     {
         //GET INFO FROM AJAX POST/FORM
@@ -126,7 +162,10 @@ class Video extends CI_Controller
         }
         else redirect('video/detail/'.$this->session->videoId);
     }
-    
+    /**
+     *  Calls function of Comment_model to add specific comment. Then we test if the post request which called this method is ajax or not. If it is ajax request we echo the comment as HTML (JS then dynamically adds the comment into page). If it isn't ajax request, we redirect to the same page to see the result - added comment.
+     *  @return void
+     */
     function comment()
     {
          $this->load->model('comment_model');
@@ -137,7 +176,11 @@ class Video extends CI_Controller
          }
          else redirect('/video/detail/'.$this->session->videoId);
     }
-    
+    /**
+     *  Generates new comment as HTML string.
+     *  @param object $newComment New comment as object
+     *  @return string New comment as HTML string
+     */
     function generateNewCommentHtml($newComment)
     {
         $imgSource = base_url() . 'img/avatars/'. (($this->session->hasAvatar == 0) ? $this->session->avatar: 'user.jpeg');

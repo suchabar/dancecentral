@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for music page of Dnb step
+ */ 
+?>
 <div class="container">
 <!-- DNB STEP - MUSIC -->
 <div class="row">

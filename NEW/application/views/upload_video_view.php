@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for uploading of new video
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
 

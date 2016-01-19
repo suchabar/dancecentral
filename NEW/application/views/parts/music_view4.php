@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for music page of Cutting shapes
+ */ 
+?>
 <div class="container">
 <!-- CUTTING SHAPES - MUSIC -->
 <div class="row">

@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for displaying success after some changes in account/settings page
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
 

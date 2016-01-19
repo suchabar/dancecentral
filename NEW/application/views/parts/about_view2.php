@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view for about page of Jumpstyle
+ */ 
+?>
 <div class="container">
 <!-- JUMPSTYLE - ABOUT -->
 <div class="row">
@@ -47,10 +52,8 @@
 
 <!-- Page Header -->
 <div class="row hidden-print">
-    <div class="col-md-2 ">
-    </div>
-    <div class="col-md-10 ">
-        <iframe class="vid-responsive" width="720" height="480" 
+   <div class="col-md-offset-2 col-md-8 ">
+        <iframe class="vid-responsive" 
         src="http://www.youtube.com/embed/Mfh7qF0PaB4?start=58"></iframe>
     </div>
 </div>

@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for displaying of home page with videos
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
     <!-- Page Header -->

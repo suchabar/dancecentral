@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for displaying of detail of video
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
     <!-- Page Header -->
@@ -6,8 +11,7 @@
             <h2 class="visible-print-block"><?php echo $video->name ?></h2>
             <h4 class="visible-print-block">https://www.youtube.com/watch?v=<?php echo $video->link ?></h4>
             <img class="video-preview img-responsive visible-print-block" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="">
-            <iframe class="vid-responsive hidden-print" src="<?php echo 'http://www.youtube.com/embed/' . $video->link . '/' ?>" 
-             width="720" height="480" > </iframe>
+            <iframe class="vid-responsive hidden-print" src="<?php echo 'http://www.youtube.com/embed/' . $video->link . '/' ?>" > </iframe>
         </div>
 
         <!--Right tab with vid info-->
@@ -102,7 +106,7 @@
                 <div class="col-md-offset-1 col-md-2">
                      <!--DELETE COMMENT-->
                     <?php echo form_open('video/deleteComment/'.$comment->id, 
-                        array('id'=>$comment->id, 'class' => ($this->session->userRole == 0)? '': 'hiddenElement',
+                        array('id'=>$comment->id, 'class' =>  (($this->session->userRole == NULL || $this->session->userRole == 1) ? 'hiddenElement': ''),
                         'onsubmit' => 'deleteComment('.$comment->id.')'));?>
                         <input type="image" name="submit"
                         src='<?php echo base_url(); ?>img/bin.png' class="removeComment-icon">

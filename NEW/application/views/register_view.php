@@ -1,3 +1,8 @@
+<?php
+/**
+ * This file contains view used for registration of new user
+ */ 
+?>
 <!-- Page Content -->
 <div class="container">
 

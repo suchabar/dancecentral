@@ -1,3 +1,8 @@
+ <?php
+/**
+ * This file contains view for about page of Freestep
+ */ 
+?> 
  <div class="container">
  <!-- FREESTEP - ABOUT -->
     <div class="row">
@@ -63,10 +68,8 @@
 
     <!-- Page Header -->
     <div class="row  hidden-print">
-        <div class="col-md-2 ">
-        </div>
-        <div class="col-md-10 ">
-            <iframe class="vid-responsive" width="720" height="480" src="http://www.youtube.com/embed/WGQAGTmc8Qs?start=117"></iframe>
+        <div class="col-md-offset-2 col-md-8 ">
+            <iframe class="vid-responsive"  src="http://www.youtube.com/embed/WGQAGTmc8Qs?start=117"></iframe>
         </div>
     </div>
     
