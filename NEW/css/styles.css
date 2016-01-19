@@ -37,6 +37,10 @@
   background-color: #3E3E3E;
 }
 
+.settings-legends
+{
+    font-size: 1.2em;
+}
 .nav-avatar
 {
     border-radius: 20px !important;
@@ -134,6 +138,8 @@ img.center {
 .vid-responsive
 {
     display: block;
+	width:100%;
+	height:480px;
 }
 
 .registration,
@@ -144,6 +150,7 @@ img.center {
 {
     margin-top: 20px;
 }
+
 #avatar
 {
     width:auto;

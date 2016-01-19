@@ -9,8 +9,8 @@
     <!-- Page Header -->
     <div class="row">
         <div class="col-sm-12">
-            <br>
-            <legend>Registration of new awesome dancer :-3</legend>
+            <h3>Registration of new awesome dancer :-3</h3>
+            <hr>
                 <!--SUCCESS ALERT-->
                 <div class="alert alert-success fade in" >
                     <strong>Success! </strong> You can now login as registred dancer :)
@@ -20,4 +20,4 @@
     </div>
     <!--./row-->
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" property="stylesheet" rel="stylesheet"> 

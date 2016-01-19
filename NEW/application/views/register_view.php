@@ -16,6 +16,7 @@
                                                      aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                  <strong>Warning! </strong>','</div>'); ?>
 
+                <fieldset>
                 <legend>Registration of new awesome dancer :-3</legend>
                 <!--USERNAME-->
                 <div id="usernameField" class="form-group required">
@@ -80,7 +81,7 @@
                                     '2'       => 'jumpstyle',
                                     '3'       => 'freestep',
                                     '4'       => 'cutting shapes'), '1',
-                                    array('class'    => 'form-control')) ?>
+                                    array('class'    => 'form-control', 'id' => "danceStyle")) ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -92,9 +93,11 @@
                         <a href="<?php echo site_url('home/') ?>" class="btn btn-default">Cancel</a>
                     </div>
                 </div>
+                
+                </fieldset>
             <?php  echo form_close() ?>
         </div>
     </div>
     <!--./row-->
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 

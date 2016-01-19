@@ -1,8 +1,3 @@
-<?php
-/**
- * This file contains view for header.
- */ 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +22,7 @@
 
 </head>
 <body>
-<!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-upper navbar-inverse navbar-static-top" >
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,46 +37,46 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                 <ul class="nav navbar-nav nav-danceStyles">
-                     <li class="<?php echo $this->session->danceStyle == 1 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/filter/1') ?>">dnb step</a>
-                    </li>
-                    <li class="<?php echo $this->session->danceStyle == 2 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/filter/2') ?>" >jumpstyle</a>
-                    </li>
-                    <li class="<?php echo $this->session->danceStyle == 3 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/filter/3') ?>" >free step</a>
-                    </li>
-                    <li class="<?php echo $this->session->danceStyle == 4 ? 'active': ''?>">
-                        <a href="<?php echo site_url('home/filter/4') ?>" >cutting shapes</a>
-                    </li>
-                </ul>
-                <div id="notLoggedIn" <?php echo get_cookie('isLoggedIn') == '0' ? 'hidden': 'visible'?>>
-                    <?php echo form_open('account/validate_credentials', array('class' => 'navbar-form pull-right')) ?>
-                        <?php echo form_input(array(
-                                    'name'          => 'login',
-                                    'id'            => 'login',
-                                    'placeholder'   => 'Username',
-                                    'class'         => 'form-control',
-                                    'value'         =>  (get_cookie('isLoggedIn') == NULL)? $this->session->username: '')) ?>
-                        <?php echo form_password(array(
-                                    'name'          => 'password',
-                                    'id'            => 'password',
-                                    'placeholder'   => 'Password',
-                                    'class'         => 'form-control')) ?>
-                       <?php echo form_submit(array(
-                                    'name'          => 'submit',
-                                    'value'         => 'Sign in',
-                                    'class'         => 'btn btn-primary')) ?>
-                        <a href="<?php echo site_url('account/signup/') ?>" class="btn btn-default">Sign up</a>
+               <ul class="nav navbar-nav nav-danceStyles">
+                   <li class="<?php echo $this->session->danceStyle == 1 ? 'active': ''?>">
+                    <a href="<?php echo site_url('home/filter/1') ?>">dnb step</a>
+                </li>
+                <li class="<?php echo $this->session->danceStyle == 2 ? 'active': ''?>">
+                    <a href="<?php echo site_url('home/filter/2') ?>" >jumpstyle</a>
+                </li>
+                <li class="<?php echo $this->session->danceStyle == 3 ? 'active': ''?>">
+                    <a href="<?php echo site_url('home/filter/3') ?>" >free step</a>
+                </li>
+                <li class="<?php echo $this->session->danceStyle == 4 ? 'active': ''?>">
+                    <a href="<?php echo site_url('home/filter/4') ?>" >cutting shapes</a>
+                </li>
+            </ul>
+            <div id="notLoggedIn" class="<?php echo get_cookie('isLoggedIn') == '0' ? 'hiddenElement': ''?>">
+                <?php echo form_open('account/validate_credentials', array('class' => 'navbar-form pull-right')) ?>
+                <?php echo form_input(array(
+                    'name'          => 'login',
+                    'id'            => 'login',
+                    'placeholder'   => 'Username',
+                    'class'         => 'form-control',
+                    'value'         =>  (get_cookie('isLoggedIn') == NULL)? $this->session->username: '')) ?>
+                <?php echo form_password(array(
+                    'name'          => 'password',
+                    'id'            => 'password',
+                    'placeholder'   => 'Password',
+                    'class'         => 'form-control')) ?>
+                <?php echo form_submit(array(
+                    'name'          => 'submit',
+                    'value'         => 'Sign in',
+                    'class'         => 'btn btn-primary')) ?>
+                    <a href="<?php echo site_url('account/signup/') ?>" class="btn btn-default">Sign up</a>
                     <?php echo form_close() ?>
                 </div>
-                <div id="loggedIn" <?php echo get_cookie('isLoggedIn') == '0' ? 'visible': 'hidden'?>>
+                <div id="loggedIn" class="<?php echo get_cookie('isLoggedIn') == '0' ? '': 'hiddenElement'?>">
                     <ul class="nav navbar-nav pull-right">
                         <li>
                             <img class="nav-avatar navbar-brand" 
                             src="<?php echo base_url() . 'img/avatars/'. (($this->session->hasAvatar == 0) ? $this->session->avatar: 'user.jpeg') ?>" 
-                            alt="user's avatar" width="auto" height="auto">&nbsp&nbsp
+                            alt="user's avatar">&nbsp;&nbsp;
                         </li>
                         <li><a href="<?php echo site_url('account/') ?>" class="navbar-brand navbar-username"><?php echo $this->session->username ?></a></li>
                         <li class="dropdown" onclick="$('#subnav-bar').hide()">
@@ -99,11 +94,11 @@
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
-                <!---->
             </div>
             <!-- /.container -->
+        </div>
     </nav>
-    <nav <?php echo $this->session->danceStyle != 0 ? 'visible': 'hidden'?> id="subnav-bar" class="navbar navbar-lower navbar-inverse navbar-static-top" role="navigation" >
+    <nav id="subnav-bar" class="navbar navbar-lower navbar-inverse navbar-static-top <?php echo ($this->session->danceStyle != 0) ? '': 'hiddenElement'?>">
         <!-- Sub-navbar -->
         <div class="container">
             <ul class="nav navbar-nav ">
@@ -126,10 +121,10 @@
     <!--ALERT-->
     <div class="container no-js">
         <noscript>
-                <div class="alert alert-warning">
-                    <strong>Warning!</strong><br> JavaScript must be enabled in order to use all the feaures available in DANCECENTRAL
-                        such as ratings and playing videos and music. Enable JavaScript by changing your browser options, then <a href="">try again</a>
-                </div> 
+            <div class="alert alert-warning">
+                <strong>Warning!</strong><br> JavaScript must be enabled in order to use all the feaures available in DANCECENTRAL
+                such as ratings and playing videos and music. Enable JavaScript by changing your browser options, then <a href="">try again</a>
+            </div> 
         </noscript>
     </div>
     

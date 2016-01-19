@@ -16,7 +16,8 @@
                                                      aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                  <strong>Warning! </strong>','</div>'); ?>
 
-                <legend>Upload new awesome video !</legend>
+                <h3>Upload new awesome video !</h3>
+                <hr>
                 <!--NAME OF VIDEO-->
                 <div id="nameOfVideoField" class="form-group required">
                     <label class="control-label col-sm-2" for="nameOfVideo">Name of the video </label>
@@ -54,7 +55,7 @@
                          <?php echo form_dropdown('whoIsOnVideo', array(
                                     '0'       => 'Me',
                                     '1'       => 'Someone else'), '0',
-                                    array('class'    => 'form-control')) ?>
+                                    array('class'    => 'form-control', 'id' =>'whoIsOnVideo')) ?>
                     </div>
                 </div>
                
@@ -67,7 +68,7 @@
                                     '2'       => 'jumpstyle',
                                     '3'       => 'freestep',
                                     '4'       => 'cutting shapes'), '1',
-                                    array('class'    => 'form-control')) ?>
+                                    array('class'    => 'form-control', 'id' =>'danceStyle')) ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,4 +85,4 @@
     </div>
     <!--./row-->
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" property="stylesheet" rel="stylesheet"> 

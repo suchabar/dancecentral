@@ -25,7 +25,7 @@
         
     </div>
     <div class="col-md-6">
-        <img class="center img-responsive" src="<?php echo base_url(); ?>/img/cutting/logo.jpg" alt="">
+        <img class="center img-responsive" src="<?php echo base_url(); ?>/img/cutting/logo.jpg" alt="Cutting shapes logo">
     </div>
 </div>              
 <br>
@@ -39,4 +39,4 @@
 </div>
 
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 

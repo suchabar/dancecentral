@@ -12,7 +12,7 @@
         <p>
             Jumpstyle is an electronic dance style and music genre popular in Eastern Europe, as well as certain parts of Australia and the United States.
             Jumpstyling is often referred to as "Jumpen": a combination of the English word 'Jump' and the Dutch & German suffix '-en' (meaning "to jump" or "jumping").
-            It originated in 1997 in Belgium but gathered bigger popularity in their neighboring country the Netherlands in the 2000s.</p>
+            It originated in 1997 in Belgium but gathered bigger popularity in their neighboring country the Netherlands in the 2000s.
         </p>
         <h3>HISTORY</h3>
         <p>
@@ -40,12 +40,13 @@
         </p>
         
         <h3>WHY WE DANCE</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis culpa molestias, ipsum, sunt dicta quam expedita voluptas reprehenderit! Nemo nulla modi dicta deleniti explicabo, omnis veniam saepe dolorum. Quisquam, cupiditate.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis culpa molestias, ipsum, sunt dicta quam expedita voluptas reprehenderit! Nemo nulla modi dicta deleniti explicabo, omnis veniam saepe dolorum. Quisquam, cupiditate.
+        </p>
 
     </div> 
     
     <div class="col-md-6">
-        <img class="img-responsive" src="<?php echo base_url(); ?>/img/jumpstyle/dancer.jpg" alt="">
+        <img class="img-responsive" src="<?php echo base_url(); ?>/img/jumpstyle/dancer.jpg" alt="Jumpstyle logo">
     </div>
 </div>              
 <br>
@@ -59,4 +60,4 @@
 </div>
 
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 

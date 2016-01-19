@@ -1,8 +1,3 @@
-<?php
-/**
- * This file contains view for footer.
- */ 
-?>
             <hr>
 
             <footer>
@@ -14,7 +9,6 @@
                 <!-- /.row -->
             </footer>
         </div>
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -30,5 +24,5 @@
     <!-- My JavaScript File-->
     <script src="<?php echo base_url(); ?>js/app.js"></script>
 
-    </body>
+</body>
 </html>

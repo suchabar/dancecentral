@@ -14,14 +14,12 @@
         </p>
 
         <h3>FESTIVALS and PARTIES</h3>
-        <p>
 
             <ul>
                 <li><a href="http://www.tomorrowland.com/en">Tomorrowland festival</a> - every July - Belgium, Brasil, USA</li>
                 <li><a href="http://www.b4l.cz/en/">Beat4Love Festival</a> - every July - CZ</li>
 
             </ul>
-        </p>
     </div>
     <div class="col-md-6">
         <audio id="electro1" src="<?php echo base_url(); ?>music/electro/1.mp3"></audio>
@@ -36,36 +34,36 @@
 
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro1')">
             <span id="electro1_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Black Wings Project - Are U Ready (Original Mix)
+        </button>&nbsp;&nbsp; Black Wings Project - Are U Ready (Original Mix)
         <br>
         <br>
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro2')">
             <span id="electro2_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Guru Josh Dj Igor Blaska - Eternity (Da Brozz Remix 2010)
+        </button>&nbsp;&nbsp; Guru Josh Dj Igor Blaska - Eternity (Da Brozz Remix 2010)
         <br>
         <br>
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro3')">
             <span id="electro3_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Fawni - Serious (In Styles Remix) [HD]
+        </button>&nbsp;&nbsp; Fawni - Serious (In Styles Remix) [HD]
         <br>
         <br>
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro4')">
             <span id="electro4_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Antoine Lavenant - I.M.A.L (Original Mix)
+        </button>&nbsp;&nbsp; Antoine Lavenant - I.M.A.L (Original Mix)
         <br>
         <br>
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro5')">
             <span id="electro5_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Yana - Disconnection (Misha Zam Remix)
+        </button>&nbsp;&nbsp; Yana - Disconnection (Misha Zam Remix)
         <br>
         <br>
         <button type="button" class="btn btn-play hidden-print" onClick="playMusic('electro6')">
             <span id="electro6_icon" class="glyphicon glyphicon-play"></span>
-        </button>&nbsp&nbsp Tristan Garner - Imperium (Original Mix)
+        </button>&nbsp;&nbsp; Tristan Garner - Imperium (Original Mix)
         <br>
         <br>
     </div>
 </div>
 
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 

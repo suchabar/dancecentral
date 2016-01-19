@@ -30,8 +30,8 @@
             <!--Preview of video-->
             <div class="video-preview-play">
                 <a href="<?php echo site_url('video/detail/' . $video->id) ?>">
-                    <img class="video-preview img-responsive" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="">
-                    <img class="video-preview-play img-responsive" src="<?php echo base_url(); ?>img/play-btn.png" alt="">
+                    <img class="video-preview img-responsive" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="Picture preview of video">
+                    <img class="video-preview-play img-responsive" src="<?php echo base_url(); ?>img/play-btn.png" alt="Play button">
                 </a>
             </div>
 
@@ -100,4 +100,4 @@
         </div>
     </div>
  <!-- SKIN CSS -->    
-<link href="<?php echo base_url(); ?>css/styles<?php echo $this->session->skin ?>.css" rel="stylesheet">  
+  <link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 

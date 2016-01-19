@@ -10,7 +10,7 @@
         <div class="col-md-8 ">
             <h2 class="visible-print-block"><?php echo $video->name ?></h2>
             <h4 class="visible-print-block">https://www.youtube.com/watch?v=<?php echo $video->link ?></h4>
-            <img class="video-preview img-responsive visible-print-block" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="">
+            <img class="video-preview img-responsive visible-print-block" src=<?php echo "http://img.youtube.com/vi/" . $video->link . "/0.jpg" ?> alt="Picture preview of video">
             <iframe class="vid-responsive hidden-print" src="<?php echo 'http://www.youtube.com/embed/' . $video->link . '/' ?>" > </iframe>
         </div>
 
@@ -67,7 +67,7 @@
             <!--AVATAR of user-->
                 <div class="col-md-2">
                     <img class="img-responsive img-rounded avatar" src="<?php echo base_url() . 'img/avatars/'. (($comment->hasAvatar == 0) ? $comment->avatar: 'user.jpeg') ?>"
-                     alt="Avatar of user who posted a comment" width="auto" height="auto">
+                     alt="Avatar of user who posted a comment" >
                 </div>
                 <div class="col-md-4">
                     <h4><?php echo $comment->id_user ?> 
@@ -81,7 +81,7 @@
                 <div class="col-md-1">
                      <form action="<?php echo site_url('video/thumbs');?>" onsubmit="thumbs(<?= $comment->id ?>, 1);"
                          method="post" accept-charset="utf-8">
-                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsup.png" 
+                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsup.png" alt="Thumbs up icon"
                         class="btn thumbs-icon btn-link <?php echo get_cookie('isLoggedIn') == '0' ? '': 'disabled' ?>" >
                         <?php echo form_hidden('commentId',$comment->id);
                               echo form_hidden('ratingValue', 1);
@@ -90,7 +90,7 @@
                <div class="col-md-1">
                      <form action="<?php echo site_url('video/thumbs');?>" onsubmit="thumbs(<?= $comment->id ?>, -1);"
                          method="post" accept-charset="utf-8">
-                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsdown.png" 
+                        <input type="image" name="submit" src="<?php echo base_url(); ?>img/thumbsdown.png" alt="Thumbs down icon"
                         class="btn thumbs-icon btn-link <?php echo get_cookie('isLoggedIn') == '0' ? '': 'disabled' ?>" >
                         <?php echo form_hidden('commentId',$comment->id);
                               echo form_hidden('ratingValue', -1);
@@ -108,7 +108,7 @@
                     <?php echo form_open('video/deleteComment/'.$comment->id, 
                         array('id'=>$comment->id, 'class' =>  (($this->session->userRole == NULL || $this->session->userRole == 1) ? 'hiddenElement': ''),
                         'onsubmit' => 'deleteComment('.$comment->id.')'));?>
-                        <input type="image" name="submit"
+                        <input type="image" name="submit" alt="Delete icon"
                         src='<?php echo base_url(); ?>img/bin.png' class="removeComment-icon">
                         <?php echo form_close(); ?>
                 </div>
@@ -118,19 +118,19 @@
 
             <!--Add new comment form-->
             <div class="page-header hidden-print new-comment-header">
-                <h4>New comment</h2>
+                <h4>New comment</h4>
             </div>
-            <div class="row comment hidden-print" <?php echo get_cookie('isLoggedIn') == '0' ? 'visible': 'hidden'?>>
+            <div class="row comment hidden-print <?php echo get_cookie('isLoggedIn') == '0' ? '': 'hiddenElement' ?> " >
                 <?php echo form_open('video/comment/', array('id'=>'new_comment')); ?>
                     <fieldset>
                         <!--AVATAR of user-->
                         <div class="col-md-2">
                                 <img class="img-responsive img-rounded avatar" src="<?php echo base_url() . 'img/avatars/'. (($this->session->hasAvatar == 0) ? $this->session->avatar: 'user.jpeg') ?>"
-                                alt="Your avatar - of logged in user" width="auto" height="auto">
+                                alt="Your avatar - of logged in user" >
                         </div>
                         <div class="col-md-10">
                             <h4 id='newCommentUser'><?php echo $this->session->username ?>
-                                 &nbsp&nbsp&nbsp<small><span><?php echo date('d/m/Y'); ?></span></small>
+                                 &nbsp;&nbsp;&nbsp;<small><span><?php echo date('d/m/Y'); ?></span></small>
                             </h4>
                             <?php echo form_textarea(array(
                                 'name'          => 'comment_text',
@@ -148,7 +148,7 @@
                 <?php echo form_close(); ?>
             </div>
             
-            <div <?php echo get_cookie('isLoggedIn') == '0' ? 'hidden': 'visible'?>>
+            <div class="<?php echo get_cookie('isLoggedIn') == '0' ? 'hiddenElement': ''?>">
                 <div class="alert alert-warning fade in" >
                     <strong>Warning! </strong> For writing comments you have to sign in first
                 </div>
@@ -157,4 +157,4 @@
     </div>
     
 <!-- SKIN CSS --> 
-<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" rel="stylesheet">  
+<link href="<?php echo base_url(); ?>css/styles<?php echo get_cookie('isLoggedIn') == '0' ? $this->session->skin: 1?>.css" property="stylesheet" rel="stylesheet"> 
